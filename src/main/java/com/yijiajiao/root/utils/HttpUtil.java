@@ -207,12 +207,13 @@ public class HttpUtil {
             e.printStackTrace();
         }
         HttpGet httpGet = new HttpGet(uri);
-        httpGet.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
-        httpGet.setHeader("Accept-Encoding", "gzip, deflate");
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
-            httpGet.addHeader(headerNames.nextElement(),request.getHeader(headerNames.nextElement()));
+            String next = headerNames.nextElement();
+            httpGet.addHeader(next,request.getHeader(next));
         }
+        httpGet.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
+        httpGet.setHeader("Accept-Encoding", "gzip, deflate");
         CloseableHttpResponse response = null;
         try {
             response = httpclient.execute(httpGet,HttpClientContext.create());
@@ -245,10 +246,10 @@ public class HttpUtil {
         }
         entity.setContent(input);
         httpPost.setEntity(entity);
-        httpPost.addHeader("Content-Type", request.getContentType());
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
-            httpPost.addHeader(headerNames.nextElement(),request.getHeader(headerNames.nextElement()));
+            String next = headerNames.nextElement();
+            httpPost.addHeader(next,request.getHeader(next));
         }
         CloseableHttpResponse response = null;
         try {
@@ -281,10 +282,10 @@ public class HttpUtil {
         }
         entity.setContent(input);
         httpPut.setEntity(entity);
-        httpPut.addHeader("Content-Type", request.getContentType());
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
-            httpPut.addHeader(headerNames.nextElement(),request.getHeader(headerNames.nextElement()));
+            String next = headerNames.nextElement();
+            httpPut.addHeader(next,request.getHeader(next));
         }
         CloseableHttpResponse response = null;
         try {
@@ -321,7 +322,8 @@ public class HttpUtil {
         HttpDelete httpDelete = new HttpDelete(uri);
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
-            httpDelete.addHeader(headerNames.nextElement(),request.getHeader(headerNames.nextElement()));
+            String next = headerNames.nextElement();
+            httpDelete.addHeader(next,request.getHeader(next));
         }
         CloseableHttpResponse response = null;
         try {

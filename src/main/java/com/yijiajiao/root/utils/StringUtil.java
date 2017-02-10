@@ -1,8 +1,10 @@
 package com.yijiajiao.root.utils;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 /**
     常用的字符串功能：
@@ -4237,110 +4239,152 @@ public static int indexOfDifference(String str1, String str2) {
     return -1;
 }
 
-/**
- * 取得两个字符串的相似度，<code>0</code>代表字符串相等，数字越大表示字符串越不像。
- *
- * <p>
- * 这个算法取自<a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>。
- * 它计算的是从字符串1转变到字符串2所需要的删除、插入和替换的步骤数。
- * </p>
- * <pre>
- * StringUtil.getLevenshteinDistance(null, *)             = IllegalArgumentException
- * StringUtil.getLevenshteinDistance(*, null)             = IllegalArgumentException
- * StringUtil.getLevenshteinDistance("","")               = 0
- * StringUtil.getLevenshteinDistance("","a")              = 1
- * StringUtil.getLevenshteinDistance("aaapppp", "")       = 7
- * StringUtil.getLevenshteinDistance("frog", "fog")       = 1
- * StringUtil.getLevenshteinDistance("fly", "ant")        = 3
- * StringUtil.getLevenshteinDistance("elephant", "hippo") = 7
- * StringUtil.getLevenshteinDistance("hippo", "elephant") = 7
- * StringUtil.getLevenshteinDistance("hippo", "zzzzzzzz") = 8
- * StringUtil.getLevenshteinDistance("hello", "hallo")    = 1
- * </pre>
- *
- * @param s 第一个字符串，如果是<code>null</code>，则看作空字符串
- * @param t 第二个字符串，如果是<code>null</code>，则看作空字符串
- *
- * @return 相似度值
- */
-public static int getLevenshteinDistance(String s, String t) {
-    s = defaultIfNull(s);
-    t = defaultIfNull(t);
+    /**
+     * 取得两个字符串的相似度，<code>0</code>代表字符串相等，数字越大表示字符串越不像。
+     *
+     * <p>
+     * 这个算法取自<a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>。
+     * 它计算的是从字符串1转变到字符串2所需要的删除、插入和替换的步骤数。
+     * </p>
+     * <pre>
+     * StringUtil.getLevenshteinDistance(null, *)             = IllegalArgumentException
+     * StringUtil.getLevenshteinDistance(*, null)             = IllegalArgumentException
+     * StringUtil.getLevenshteinDistance("","")               = 0
+     * StringUtil.getLevenshteinDistance("","a")              = 1
+     * StringUtil.getLevenshteinDistance("aaapppp", "")       = 7
+     * StringUtil.getLevenshteinDistance("frog", "fog")       = 1
+     * StringUtil.getLevenshteinDistance("fly", "ant")        = 3
+     * StringUtil.getLevenshteinDistance("elephant", "hippo") = 7
+     * StringUtil.getLevenshteinDistance("hippo", "elephant") = 7
+     * StringUtil.getLevenshteinDistance("hippo", "zzzzzzzz") = 8
+     * StringUtil.getLevenshteinDistance("hello", "hallo")    = 1
+     * </pre>
+     *
+     * @param s 第一个字符串，如果是<code>null</code>，则看作空字符串
+     * @param t 第二个字符串，如果是<code>null</code>，则看作空字符串
+     *
+     * @return 相似度值
+     */
+    public static int getLevenshteinDistance(String s, String t) {
+        s = defaultIfNull(s);
+        t = defaultIfNull(t);
 
-    int[][] d; // matrix
-    int n; // length of s
-    int m; // length of t
-    int i; // iterates through s
-    int j; // iterates through t
-    char s_i; // ith character of s
-    char t_j; // jth character of t
-    int cost; // cost
+        int[][] d; // matrix
+        int n; // length of s
+        int m; // length of t
+        int i; // iterates through s
+        int j; // iterates through t
+        char s_i; // ith character of s
+        char t_j; // jth character of t
+        int cost; // cost
 
-    // Step 1
-    n = s.length();
-    m = t.length();
+        // Step 1
+        n = s.length();
+        m = t.length();
 
-    if (n == 0) {
-        return m;
-    }
+        if (n == 0) {
+            return m;
+        }
 
-    if (m == 0) {
-        return n;
-    }
+        if (m == 0) {
+            return n;
+        }
 
-    d = new int[n + 1][m + 1];
+        d = new int[n + 1][m + 1];
 
-    // Step 2
-    for (i = 0; i <= n; i++) {
-        d[i][0] = i;
-    }
+        // Step 2
+        for (i = 0; i <= n; i++) {
+            d[i][0] = i;
+        }
 
-    for (j = 0; j <= m; j++) {
-        d[0][j] = j;
-    }
+        for (j = 0; j <= m; j++) {
+            d[0][j] = j;
+        }
 
-    // Step 3
-    for (i = 1; i <= n; i++) {
-        s_i = s.charAt(i - 1);
+        // Step 3
+        for (i = 1; i <= n; i++) {
+            s_i = s.charAt(i - 1);
 
-        // Step 4
-        for (j = 1; j <= m; j++) {
-            t_j = t.charAt(j - 1);
+            // Step 4
+            for (j = 1; j <= m; j++) {
+                t_j = t.charAt(j - 1);
 
-            // Step 5
-            if (s_i == t_j) {
-                cost = 0;
-            } else {
-                cost = 1;
+                // Step 5
+                if (s_i == t_j) {
+                    cost = 0;
+                } else {
+                    cost = 1;
+                }
+
+                // Step 6
+                d[i][j] = min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
             }
+        }
 
-            // Step 6
-            d[i][j] = min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+        // Step 7
+        return d[n][m];
+    }
+
+    /**
+     * 取得最小数。
+     *
+     * @param a 整数1
+     * @param b 整数2
+     * @param c 整数3
+     *
+     * @return 三个数中的最小值
+     */
+    private static int min(int a, int b, int c) {
+        if (b < a) {
+            a = b;
+        }
+
+        if (c < a) {
+            a = c;
+        }
+
+        return a;
+    }
+
+    /**
+     * 获得UUID
+     * @return
+     */
+    public static String getUUID(){
+        return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    /**
+     * MD5加密
+     * @param type 1 返回32位加密串；2 返回16位加密串
+     * @return
+     */
+    public static String getMD5(String str,int type){
+        try {
+            //生成实现指定摘要算法的 MessageDigest 对象。
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //使用指定的字节数组更新摘要。
+            md.update(str.getBytes());
+            //通过执行诸如填充之类的最终操作完成哈希计算。
+            byte b[] = md.digest();
+            //生成具体的md5密码到buf数组
+            int i;
+            StringBuffer buf = new StringBuffer("");
+            for (int offset = 0; offset < b.length; offset++) {
+                i = b[offset];
+                if (i < 0)
+                    i += 256;
+                if (i < 16)
+                    buf.append("0");
+                buf.append(Integer.toHexString(i));
+            }
+            if (2==type) return buf.toString().substring(8, 24);// 16位的加密，其实就是32位加密后的截取
+            return buf.toString();// 32位的加密
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
-    // Step 7
-    return d[n][m];
-}
-
-/**
- * 取得最小数。
- *
- * @param a 整数1
- * @param b 整数2
- * @param c 整数3
- *
- * @return 三个数中的最小值
- */
-private static int min(int a, int b, int c) {
-    if (b < a) {
-        a = b;
-    }
-
-    if (c < a) {
-        a = c;
-    }
-
-    return a;
-}
 }

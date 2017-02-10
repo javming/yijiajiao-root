@@ -49,7 +49,7 @@ public class Router4Asy extends HttpServlet {
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info(" __[request_path:" + request.getPathInfo()+"]\n __[query_param:"+request.getQueryString()
+        log.info("请求信息：\n __[request_path:" + request.getPathInfo()+"]\n __[query_param:"+request.getQueryString()
                 +"]\n __[request_method:"+request.getMethod()+"]");
         if ("/command".equals(request.getPathInfo())||"/command/".equals(request.getPathInfo())) {
             BufferedReader reader = request.getReader();

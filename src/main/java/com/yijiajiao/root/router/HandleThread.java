@@ -55,7 +55,7 @@ public class HandleThread extends Thread {
             log.info("__其他系统返回：\n  "+res);
             try {
                 out = response.getWriter();
-                out.println(res);
+                out.print(res);
             } catch (IOException e) {
                 e.printStackTrace();
             }finally {

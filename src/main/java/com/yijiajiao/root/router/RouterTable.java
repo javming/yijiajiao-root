@@ -35,14 +35,16 @@ public class RouterTable implements Serializable{
             try {
                 File loadFile = new File(ROUTER_TABLE_FILE);
                 if (!loadFile.exists()) {
+                    log.info("路由表文件不存在！");
                     instance = new RouterTable();
                     instance.save();
                 } else {
+                    log.info("实例化路由表配置...");
                     XMLDecoder decoder = new XMLDecoder(new FileInputStream(loadFile));
                     instance = (RouterTable) decoder.readObject();
                 }
             } catch (FileNotFoundException e) {
-                log.info(e.toString(), e);
+                e.printStackTrace();
             }
         }
         return instance;
