@@ -43,14 +43,14 @@ public class HttpUtil {
     static {
         // 连接池设置
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        cm.setMaxTotal(20); // 最多20个连接
-        cm.setDefaultMaxPerRoute(20); // 每个路由20个连接
+        cm.setMaxTotal(Config.getInt("http.maxtotal")); // 最多20个连接
+        cm.setDefaultMaxPerRoute(Config.getInt("http.defaultmaxperroute")); // 每个路由20个连接
         // 创建client对象
         httpclient = HttpClients.custom().setConnectionManager(cm).build();
         // 扫描无效连接的线程
         scanThread = new IdleConnectionMonitorThread(cm);
         scanThread.start();
-        log.info("httpclient init success!");
+        log.info("httpclient-pool init success!");
     }
     /**
      * 关闭连接池.

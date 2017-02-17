@@ -2,6 +2,8 @@ package com.yijiajiao.root.utils;
 
 import org.apache.http.conn.HttpClientConnectionManager;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @AUTHOR zhaoming@eduspace
  * @CREATE 2017-01-23-10:26
@@ -26,7 +28,7 @@ public class IdleConnectionMonitorThread extends Thread{
                     connMgr.closeExpiredConnections();
 
                     // 可选, 关闭空闲超过30秒的
-                    //connMgr.closeIdleConnections(30, TimeUnit.SECONDS);
+                    connMgr.closeIdleConnections(30, TimeUnit.SECONDS);
                 }
             }
         } catch (InterruptedException ex) {
