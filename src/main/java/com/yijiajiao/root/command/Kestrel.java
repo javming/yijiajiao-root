@@ -1,4 +1,4 @@
-package com.yijiajiao.root.kestrel;
+package com.yijiajiao.root.command;
 
 import com.yijiajiao.root.utils.Config;
 import net.rubyeye.xmemcached.MemcachedClient;

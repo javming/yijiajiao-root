@@ -5,7 +5,6 @@ import com.yijiajiao.root.bean.ResultBean;
 import com.yijiajiao.root.bean.SystemStatus;
 import com.yijiajiao.root.router.RouterInfo;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.utils.URIBuilder;
@@ -15,6 +14,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +26,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -33,9 +35,14 @@ import java.util.Enumeration;
  */
 public class HttpUtil {
 
+    public final static int MAX_TOTAL_CONNECTIONS = Config.getInt("http.maxtotal");
+    public final static int MAX_ROUTE_CONNECTIONS = Config.getInt("http.defaultmaxperroute");
+    private static final String CONTENT_TYPE="application/json";
+    private static final String CHARSET="UTF-8";
     private static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
     private static CloseableHttpClient httpclient = null;
     private static IdleConnectionMonitorThread scanThread = null;
+    private static HttpContext context =HttpClientContext.create();
 
     /**
      * 初始化client对象.
@@ -43,8 +50,8 @@ public class HttpUtil {
     static {
         // 连接池设置
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        cm.setMaxTotal(Config.getInt("http.maxtotal")); // 最多20个连接
-        cm.setDefaultMaxPerRoute(Config.getInt("http.defaultmaxperroute")); // 每个路由20个连接
+        cm.setMaxTotal(MAX_TOTAL_CONNECTIONS); // 最大连接数
+        cm.setDefaultMaxPerRoute(MAX_ROUTE_CONNECTIONS); // 每个路由的最大连接数
         // 创建client对象
         httpclient = HttpClients.custom().setConnectionManager(cm).build();
         // 扫描无效连接的线程
@@ -66,130 +73,113 @@ public class HttpUtil {
             scanThread.shutdown();
         }
     }
-    /**
-     * Get方式取得URL的内容.
-     *
-     * @param url
-     *            访问的网址
-     * @return
-     */
-    public static String getUrlContent(String url) {
+
+    public static String httpRest(String url,Map<String, Object> headers,Object body,String method){
         // 参数检查
         if (httpclient == null) {
             throw new RuntimeException("httpclient not init.");
         }
-        if (url == null || url.trim().length() == 0) {
+        if (StringUtil.isEmpty(url)) {
             throw new RuntimeException("url is blank.");
         }
-        HttpGet httpGet = new HttpGet(url);
+        switch (method){
+            case "GET":
+                return httpGet(url,headers,CHARSET);
+            case "POST":
+                return httpPost(url,headers,body,CONTENT_TYPE,CHARSET);
+            case "PUT":
+                return httpPut(url,headers,body,CONTENT_TYPE,CHARSET);
+            case "DELETE":
+                return httpDelete(url,headers,CHARSET);
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 添加头信息
+     */
+    private static HttpUriRequest setHeaders(HttpUriRequest request,Map<String, Object> headers){
+        Iterator i = headers.entrySet().iterator();
+        while (i.hasNext()) {
+            Map.Entry en = (Map.Entry) i.next();
+            request.addHeader((String) en.getKey(), (String) en.getValue());
+        }
+        return request;
+    }
+
+    private static String execute(HttpUriRequest request,String charset){
         CloseableHttpResponse response = null;
         try {
-            // 执行请求
-            response = httpclient.execute(httpGet, HttpClientContext.create());
-            // 转换结果
-            HttpEntity entity1 = response.getEntity();
-            String html = EntityUtils.toString(entity1);
-
-            // 消费掉内容
-            EntityUtils.consume(entity1);
-            return html;
+            response = httpclient.execute(request,HttpClientContext.create());
+            HttpEntity entity = response.getEntity();
+            return EntityUtils.toString(entity, charset);
         } catch (IOException e) {
-            return "";
+            e.printStackTrace();
+            return JSON.toJSONString(ResultBean.getFailResult(SystemStatus.SERVER_ERROR));
         } finally {
             if (response != null) {
                 try {
                     response.close();
                 } catch (IOException e) {
+                    log.error("e:"+e.getMessage());
                 }
             }
-            httpGet.releaseConnection();
         }
     }
-    /**
-     * Post方式取得URL的内容，默认为"application/x-www-form-urlencoded"格式，charset为UTF-8.
-     *
-     * @param url
-     *            访问的网址
-     * @param content
-     *            提交的数据
-     * @return
-     */
-    public static String postToUrl(String url, String content) {
-        return postToUrl(url, content, "application/x-www-form-urlencoded",
-                "UTF-8");
+
+    public static String httpGet(String url,Map<String, Object> headers,String charset){
+        HttpGet httpGet = new HttpGet(url);
+        if(headers!=null&&!headers.isEmpty()){
+            httpGet = (HttpGet) setHeaders(httpGet,headers);
+        }
+        String res = execute(httpGet,charset);
+        httpGet.releaseConnection();
+        return res;
     }
 
-    /**
-     * json字符串形式请求
-     *
-     * @param url
-     * @param content
-     * @return
-     */
-    public static String postForJson(String url, String content) {
-        return postToUrl(url, content, "application/json", "UTF-8");
-    }
-
-    /**
-     * Post方式取得URL的内容.
-     *
-     * @param url
-     *            访问的网址
-     * @param content
-     *            提交的数据
-     * @return
-     */
-    public static String postToUrl(String url, String content,
-                                   String contentType, String charset) {
-
-        // 参数检查
-        if (httpclient == null) {
-            throw new RuntimeException("httpclient not init.");
-        }
-        if (url == null || url.trim().length() == 0) {
-            throw new RuntimeException("url is blank.");
-        }
-
+    public static String httpPost(String url,Map<String, Object> headers,Object body,String contentType,
+                                  String charset){
         HttpPost httpPost = new HttpPost(url);
-
-        // 设置内容
-        ContentType type = ContentType.create(contentType,
-                Charset.forName(charset));
-        StringEntity reqEntity = new StringEntity(content, type);
-        httpPost.setEntity(reqEntity);
-        httpPost.addHeader("User-Agent",
-                "Mozilla/4.0 (compatible; MSIE .0; Windows NT 6.1; Trident/4.0; SLCC2;)");
-        httpPost.addHeader("Accept-Encoding", "*");
-
-        // 设置请求和传输超时时间
-        RequestConfig requestConfig = RequestConfig.custom()
-                .setSocketTimeout(30000).setConnectTimeout(30000).build();
-        httpPost.setConfig(requestConfig);
-
-        CloseableHttpResponse response = null;
-        try {
-            // 执行请求
-            response = httpclient.execute(httpPost, HttpClientContext.create());
-
-            // 转换结果
-            HttpEntity entity1 = response.getEntity();
-            String html = EntityUtils.toString(entity1, charset);
-
-            // 消费掉内容
-            EntityUtils.consume(entity1);
-            return html;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return "-1";
-        } finally {
-            if (response != null) {
-                try {
-                    response.close();
-                } catch (IOException e) {
-                }
-            }
-            httpPost.releaseConnection();
+        if(headers!=null&&!headers.isEmpty()){
+            httpPost = (HttpPost) setHeaders(httpPost,headers);
         }
+        // 设置内容
+        if (body!=null){
+            ContentType type = ContentType.create(contentType,Charset.forName(charset));
+            StringEntity entity = new StringEntity(JSON.toJSONString(body),type);
+            httpPost.setEntity(entity);
+        }
+        String res = execute(httpPost, charset);
+        httpPost.releaseConnection();
+        return res;
+    }
+
+    public static String httpPut(String url,Map<String, Object> headers,Object body,String contentType,
+                                 String charset){
+        HttpPut httpPut = new HttpPut(url);
+        if(headers!=null&&!headers.isEmpty()){
+            httpPut = (HttpPut) setHeaders(httpPut,headers);
+        }
+        // 设置内容
+        if (body!=null){
+            ContentType type = ContentType.create(contentType,Charset.forName(charset));
+            StringEntity entity = new StringEntity(JSON.toJSONString(body),type);
+            httpPut.setEntity(entity);
+        }
+        String res = execute(httpPut, charset);
+        httpPut.releaseConnection();
+        return res;
+    }
+
+    public static String httpDelete(String url,Map<String, Object> headers,String charset){
+        HttpDelete httpDelete = new HttpDelete(url);
+        if(headers!=null&&!headers.isEmpty()){
+            httpDelete = (HttpDelete) setHeaders(httpDelete,headers);
+        }
+        String res = execute(httpDelete,charset);
+        httpDelete.releaseConnection();
+        return res;
     }
 
 
