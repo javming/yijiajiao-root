@@ -2,12 +2,14 @@ package com.yijiajiao.root.command.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.yijiajiao.rabbitmq.bean.ApplyTeacherBean;
-import com.yijiajiao.rabbitmq.bean.CompleteInfoBean;
-import com.yijiajiao.rabbitmq.bean.SetStoreBean;
-import com.yijiajiao.rabbitmq.util.Config;
-import com.yijiajiao.rabbitmq.util.RabbitmqUtil;
+import com.yijiajiao.root.bean.command.ApplyTeacherBean;
+import com.yijiajiao.root.bean.command.CompleteInfoBean;
+import com.yijiajiao.root.bean.command.SetStoreBean;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.HttpUtil;
 import org.springframework.stereotype.Service;
+
+import static com.yijiajiao.root.utils.RootUtil.USER_SERVER;
 
 /**
  * 用户管理方向
@@ -16,18 +18,18 @@ import org.springframework.stereotype.Service;
  * 
  */
 @Service("userLogic")
-public class UserLogic extends BasicLogic{
+public class UserLogic {
 
 	public String applyteacher(String params) {
 		String applyteacher = Config.getString("applyteacher");
 		ApplyTeacherBean applyTeacherBean = JSON.parseObject(params, ApplyTeacherBean.class);
-		return RabbitmqUtil.httpRest(user_server, applyteacher, null, applyTeacherBean, "POST");
+		return HttpUtil.httpRest(USER_SERVER, applyteacher, null, applyTeacherBean, "POST");
 	}
 
 	public String setStore(String params) {
 		String setStore = Config.getString("setStore");
 		SetStoreBean setStoreBean = JSON.parseObject(params, SetStoreBean.class);
-		return RabbitmqUtil.httpRest(user_server, setStore, null, setStoreBean, "POST");
+		return HttpUtil.httpRest(USER_SERVER, setStore, null, setStoreBean, "POST");
 	}
 
 	/**
@@ -36,7 +38,7 @@ public class UserLogic extends BasicLogic{
 	public String complete(String params) {
 		String path = Config.getString("complete");
 		CompleteInfoBean completeInfoBean = JSON.parseObject(params, CompleteInfoBean.class);
-		return RabbitmqUtil.httpRest(user_server, path, null, completeInfoBean, "POST");
+		return HttpUtil.httpRest(USER_SERVER, path, null, completeInfoBean, "POST");
 	}
 
 }

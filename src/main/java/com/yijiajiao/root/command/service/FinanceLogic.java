@@ -2,18 +2,20 @@ package com.yijiajiao.root.command.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.yijiajiao.rabbitmq.bean.BindAliPayBean;
-import com.yijiajiao.rabbitmq.util.Config;
-import com.yijiajiao.rabbitmq.util.RabbitmqUtil;
+import com.yijiajiao.root.bean.command.BindAliPayBean;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.HttpUtil;
 import org.springframework.stereotype.Service;
 
+import static com.yijiajiao.root.utils.RootUtil.FINANCE_SERVER;
+
 @Service("financeLogic")
-public class FinanceLogic extends BasicLogic{
+public class FinanceLogic{
 
 
 	public String bindAliPay(String params) {
 		String bindAliPay = Config.getString("bindAliPay");
 		BindAliPayBean bindAliPayBean = JSON.parseObject(params, BindAliPayBean.class);
-		return RabbitmqUtil.httpRest(finance_server, bindAliPay, null, bindAliPayBean, "POST");
+		return HttpUtil.httpRest(FINANCE_SERVER, bindAliPay, null, bindAliPayBean, "POST");
 	}
 }

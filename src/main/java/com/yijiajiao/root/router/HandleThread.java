@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import static com.yijiajiao.root.utils.RootUtil.jsonResult;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -51,18 +51,8 @@ public class HandleThread extends Thread {
                     res = HttpUtil.httpDelete(routerInfo,request,CHARSET);
                     break;
             }
-            PrintWriter out = null;
             log.info("__其他系统返回：\n  "+res);
-            try {
-                out = response.getWriter();
-                out.print(res);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                if (out != null){
-                    out.close();
-                }
-            }
+            jsonResult(response,res);
 
         }
         asyncContext.complete();

@@ -2,17 +2,20 @@ package com.yijiajiao.root.command.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.yijiajiao.rabbitmq.bean.*;
-import com.yijiajiao.rabbitmq.util.Config;
-import com.yijiajiao.rabbitmq.util.RabbitmqUtil;
-import com.yijiajiao.rabbitmq.util.RedisUtil;
-import com.yijiajiao.rabbitmq.util.StringUtil;
+import com.yijiajiao.root.bean.ResultBean;
+import com.yijiajiao.root.bean.command.*;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.HttpUtil;
+import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import static com.yijiajiao.root.utils.RootUtil.SALE_SERVER;
+import static com.yijiajiao.root.utils.RootUtil.WARES_SERVER;
+
 @Service("baseDataLogic")
-public class BaseDataLogic extends BasicLogic{
+public class BaseDataLogic{
 
 	private static final Logger log = LoggerFactory.getLogger(BaseDataLogic.class);
 
@@ -22,7 +25,7 @@ public class BaseDataLogic extends BasicLogic{
 	public String CreateExam(String params) {
 		String createExam = Config.getString("createExam");
 		CreateExamBean createExamBean = JSON.parseObject(params, CreateExamBean.class);
-		return RabbitmqUtil.httpRest(wares_server, createExam, null, createExamBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, createExam, null, createExamBean, "POST");
 
 	}
 
@@ -32,7 +35,7 @@ public class BaseDataLogic extends BasicLogic{
 	public String CreateExamDetail(String params) {
 		String createExamDetail = Config.getString("CreateExamDetail");
 		CreateExamDetailBean createExamDetailBean = JSON.parseObject(params, CreateExamDetailBean.class);
-		return RabbitmqUtil.httpRest(wares_server, createExamDetail, null, createExamDetailBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, createExamDetail, null, createExamDetailBean, "POST");
 
 	}
 
@@ -42,19 +45,19 @@ public class BaseDataLogic extends BasicLogic{
 	public String SmartCreateExam(String params) {
 		String smartCreateExam = Config.getString("SmartCreateExam");
 		SmartCreateExamBean smartCreateExamBean = JSON.parseObject(params, SmartCreateExamBean.class);
-		return RabbitmqUtil.httpRest(wares_server, smartCreateExam, null, smartCreateExamBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, smartCreateExam, null, smartCreateExamBean, "POST");
 	}
 
 	public String AddQuestions(String params) {
 		String AddQuestions = Config.getString("AddQuestions");
 		AddQuestionsBean addQuestionsBean = JSON.parseObject(params, AddQuestionsBean.class);
-		return RabbitmqUtil.httpRest(wares_server, AddQuestions, null, addQuestionsBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, AddQuestions, null, addQuestionsBean, "POST");
 	}
 	
-	public String markingPaper(String tag,String params) {
+	public String markingPaper(String params) {
 		String markingPaper = Config.getString("markingPaper");
 		DiagnoseAnswerSubmitBean diagnoseAnswerSubmitBean = JSON.parseObject(params, DiagnoseAnswerSubmitBean.class);
-		String res = RabbitmqUtil.httpRest(wares_server, markingPaper, null, diagnoseAnswerSubmitBean, "POST");
+		String res = HttpUtil.httpRest(WARES_SERVER, markingPaper, null, diagnoseAnswerSubmitBean, "POST");
 		ResultBean result = JSON.parseObject(res, ResultBean.class);
 		if(result.getCode()!=200){
 			return res;
@@ -64,10 +67,9 @@ public class BaseDataLogic extends BasicLogic{
 			String updateIsHomework=Config.getString("updateIsHomework")+"openId="+diagnoseAnswerSubmitBean.getOpenId()+
 					"&commodityId="+diagnoseAnswerSubmitBean.getWaresId()+"&slaveId="+
 					(StringUtil.isEmpty(diagnoseAnswerSubmitBean.getWaresSlaveId())?-1:diagnoseAnswerSubmitBean.getWaresSlaveId());
-			RabbitmqUtil.httpRest(sale_server,updateIsHomework,null,null,"PUT");
+			HttpUtil.httpRest(SALE_SERVER,updateIsHomework,null,null,"PUT");
 		}
-		RedisUtil.setEx(tag, 36000, res);
-		return JSON.toJSONString(ResultBean.getSucResult(tag));
+		return res;
 	}
 
 }

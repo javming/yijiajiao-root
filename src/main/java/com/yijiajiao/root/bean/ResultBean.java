@@ -10,35 +10,44 @@ public class ResultBean {
     private String message;
     private Object result = "";
 
-    public int getCode() {
-        return code;
-    }
-    public void setCode(int code) {
-        this.code = code;
-    }
-    public String getMessage() {
-        return message;
-    }
-    public void setMessage(String message) {
-        this.message = message;
-    }
-    public Object getResult() {
-        return result;
-    }
-    public void setResult(Object result) {
-        this.result = result;
-    }
     public String getRequestId() {
         return requestId;
     }
+
     public void setRequestId(String requestId) {
         this.requestId = requestId;
     }
+
     public String getHttpCode() {
         return httpCode;
     }
+
     public void setHttpCode(String httpCode) {
         this.httpCode = httpCode;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
     }
 
     /**

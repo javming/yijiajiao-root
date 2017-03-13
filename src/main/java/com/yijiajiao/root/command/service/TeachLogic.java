@@ -2,18 +2,20 @@ package com.yijiajiao.root.command.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.yijiajiao.rabbitmq.bean.*;
-import com.yijiajiao.rabbitmq.util.Config;
-import com.yijiajiao.rabbitmq.util.RabbitmqUtil;
+import com.yijiajiao.root.bean.command.*;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.HttpUtil;
 import org.springframework.stereotype.Service;
 
+import static com.yijiajiao.root.utils.RootUtil.TEACH_SERVER;
+
 @Service("teachLogic")
-public class TeachLogic extends BasicLogic{
+public class TeachLogic {
 	
 	public String applyPermission(String params) {
 		String setStore = Config.getString("applyPermission");
 		ApplyPermissionBean applyPermissionBean =  JSON.parseObject(params, ApplyPermissionBean.class);
-		return RabbitmqUtil.httpRest(teach_server, setStore, null, applyPermissionBean, "POST");
+		return HttpUtil.httpRest(TEACH_SERVER, setStore, null, applyPermissionBean, "POST");
 	}
 
 	/**
@@ -22,7 +24,7 @@ public class TeachLogic extends BasicLogic{
 	public String passTest(String params) {
 		String path = Config.getString("passTest");
 		PassTestBean passTestBean =  JSON.parseObject(params, PassTestBean.class);
-		return RabbitmqUtil.httpRest(teach_server, path, null, passTestBean, "POST");
+		return HttpUtil.httpRest(TEACH_SERVER, path, null, passTestBean, "POST");
 
 	}
 
@@ -30,7 +32,7 @@ public class TeachLogic extends BasicLogic{
 		String updateanswerpermission = Config.getString("insertanswerpermission");
 		UpdateanswerpermissionBean updateanswerpermissionBean =  JSON.parseObject(
 				params, UpdateanswerpermissionBean.class);
-		return RabbitmqUtil.httpRest(teach_server, updateanswerpermission,
+		return HttpUtil.httpRest(TEACH_SERVER, updateanswerpermission,
 				null, updateanswerpermissionBean, "POST");
 
 	}
@@ -38,20 +40,20 @@ public class TeachLogic extends BasicLogic{
 	public String applyInterviewTime(String params) {
 		String applyinterviewtime = Config.getString("applyinterviewtime");
 		ApplyinterviewtimeBean applyinterviewtimeBean =  JSON.parseObject(params, ApplyinterviewtimeBean.class);
-		return RabbitmqUtil.httpRest(teach_server, applyinterviewtime, null, applyinterviewtimeBean, "POST");
+		return HttpUtil.httpRest(TEACH_SERVER, applyinterviewtime, null, applyinterviewtimeBean, "POST");
 
 	}
 
 	public String applyFacingTeachTime(String params) {
 		String applyfacingteachtime = Config.getString("applyfacingteachtime");
 		ApplyfacingteachtimeBean applyfacingteachtimeBean =  JSON.parseObject(params, ApplyfacingteachtimeBean.class);
-		return RabbitmqUtil.httpRest(teach_server, applyfacingteachtime, null, applyfacingteachtimeBean, "POST");
+		return HttpUtil.httpRest(TEACH_SERVER, applyfacingteachtime, null, applyfacingteachtimeBean, "POST");
 	}
 	
 	public String diagnoseAnswerSubmit(String params){
 		String diagnoseAnswerSubmit = Config.getString("diagnoseAnswerSubmit");
 		DiagnoseAnswerSubmitBean diagnoseAnswerSubmitBean=  JSON.parseObject(params, DiagnoseAnswerSubmitBean.class);
-		return RabbitmqUtil.httpRest(teach_server, diagnoseAnswerSubmit, null, diagnoseAnswerSubmitBean, "POST");
+		return HttpUtil.httpRest(TEACH_SERVER, diagnoseAnswerSubmit, null, diagnoseAnswerSubmitBean, "POST");
 	}
 	
 }

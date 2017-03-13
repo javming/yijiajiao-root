@@ -2,6 +2,8 @@ package com.yijiajiao.root.router;
 
 
 import com.yijiajiao.root.utils.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -16,6 +18,7 @@ import java.io.IOException;
 @WebFilter( filterName = "aCharacterEncoding", value = "/*", asyncSupported = true)
 public class CharacterEncodingFilter implements Filter {
 
+    private static Logger log = LoggerFactory.getLogger(CharacterEncodingFilter.class);
     private String encoding ;
 
     @Override
@@ -28,6 +31,7 @@ public class CharacterEncodingFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        long _start = System.currentTimeMillis();
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         request.setCharacterEncoding(encoding);
@@ -37,6 +41,8 @@ public class CharacterEncodingFilter implements Filter {
         response.addHeader("Access-Control-Allow-Headers", "Content-Type");
         response.addHeader("Access-Control-Max-Age", "1800");//30 min
         filterChain.doFilter(request,response);
+        long _end = System.currentTimeMillis();
+        log.info("【本次请求耗时："+(_end-_start)+"ss】");
     }
 
     @Override

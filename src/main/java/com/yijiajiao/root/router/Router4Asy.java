@@ -66,7 +66,7 @@ public class Router4Asy extends HttpServlet {
             reader.close();
             String data = sb.toString();
             log.info("command请求信息：\n __[cmd="+cmd+"\n __[bodyParam:"+data);
-            aCtx.start(new LogicMapping(cmd,aCtx,request,response));
+            aCtx.start(new LogicMapping(cmd,aCtx,response,data));
         } else {
             aCtx.start(new HandleThread(aCtx, request, response));
         }

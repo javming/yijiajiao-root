@@ -74,7 +74,8 @@ public class HttpUtil {
         }
     }
 
-    public static String httpRest(String url,Map<String, Object> headers,Object body,String method){
+    public static String httpRest(String server,String uri,Map<String, Object> headers,Object body,String method){
+        String url = "http://"+server+uri;
         // 参数检查
         if (httpclient == null) {
             throw new RuntimeException("httpclient not init.");
@@ -82,18 +83,25 @@ public class HttpUtil {
         if (StringUtil.isEmpty(url)) {
             throw new RuntimeException("url is blank.");
         }
+        log.info(" 请求其它系统路径：===>>\n __[http://"+url+"]"+
+                (headers==null?"":("\n __[headParams]:"+JSON.toJSONString(headers)))+
+                (body==null?"": ("\n __[bodyParams]:"+ JSON.toJSONString(body))));
+        String res = null;
         switch (method){
             case "GET":
-                return httpGet(url,headers,CHARSET);
+                res = httpGet(url,headers,CHARSET);break;
             case "POST":
-                return httpPost(url,headers,body,CONTENT_TYPE,CHARSET);
+                res = httpPost(url,headers,body,CONTENT_TYPE,CHARSET);break;
             case "PUT":
-                return httpPut(url,headers,body,CONTENT_TYPE,CHARSET);
+                res = httpPut(url,headers,body,CONTENT_TYPE,CHARSET);break;
             case "DELETE":
-                return httpDelete(url,headers,CHARSET);
+                res = httpDelete(url,headers,CHARSET);break;
             default:
-                return null;
+                log.error("The request-method is not defined");
+                throw new RuntimeException("The request-method is not defined");
         }
+        log.info("其他系统返回：<<===\n __"+res);
+        return res;
     }
 
     /**

@@ -2,17 +2,19 @@ package com.yijiajiao.root.command.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.yijiajiao.rabbitmq.bean.*;
-import com.yijiajiao.rabbitmq.util.Config;
-import com.yijiajiao.rabbitmq.util.RabbitmqUtil;
+import com.yijiajiao.root.bean.command.*;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.HttpUtil;
 import org.springframework.stereotype.Service;
+
+import static com.yijiajiao.root.utils.RootUtil.WARES_SERVER;
 
 /**
  * 商品资源方向
  */
 
 @Service("wareLogic")
-public class WareLogic extends BasicLogic{
+public class WareLogic {
 
 
 	/**
@@ -21,7 +23,7 @@ public class WareLogic extends BasicLogic{
 	public String uploadVideo(String params) {
 		String path = Config.getString("uploadvideo");
 		UploadVideoParamBean uploadVideoParamBean = JSON.parseObject(params, UploadVideoParamBean.class);
-		return RabbitmqUtil.httpRest(wares_server, path, null, uploadVideoParamBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, path, null, uploadVideoParamBean, "POST");
 	}
 
 	/**
@@ -30,7 +32,7 @@ public class WareLogic extends BasicLogic{
 	public String wareLive(String params) {
 		String path = Config.getString("warelive");
 		WareLiveBean wareLiveBean = JSON.parseObject(params, WareLiveBean.class);
-		return RabbitmqUtil.httpRest(wares_server, path, null, wareLiveBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, path, null, wareLiveBean, "POST");
 	}
 
 	/**
@@ -40,7 +42,7 @@ public class WareLogic extends BasicLogic{
 	public String wareVideo(String params) {
 		String path = Config.getString("warevideo");
 		WareVideoBean wareVideoBean = JSON.parseObject(params, WareVideoBean.class);
-		return RabbitmqUtil.httpRest(wares_server, path, null, wareVideoBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, path, null, wareVideoBean, "POST");
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class WareLogic extends BasicLogic{
 	public String wareOne2One(String params) {
 		String path = Config.getString("wareOne2One");
 		WareOne2OneBean wareOne2OneBean = JSON.parseObject(params, WareOne2OneBean.class);
-		return RabbitmqUtil.httpRest(wares_server, path, null, wareOne2OneBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, path, null, wareOne2OneBean, "POST");
 	}
 
 	/**
@@ -58,7 +60,7 @@ public class WareLogic extends BasicLogic{
 	public String commitExam(String params) {
 		String path = Config.getString("commitExam");
 		CommitExamBean commitExamBean = JSON.parseObject(params, CommitExamBean.class);
-		return RabbitmqUtil.httpRest(wares_server, path, null, commitExamBean, "POST");
+		return HttpUtil.httpRest(WARES_SERVER, path, null, commitExamBean, "POST");
 	}
 
 	/**
@@ -67,6 +69,6 @@ public class WareLogic extends BasicLogic{
 	public String updateWaresLive(String params) {
 		String path = Config.getString("updateWaresLive");
 		WareLiveBean wareLiveBean = JSON.parseObject(params,WareLiveBean.class);
-		return RabbitmqUtil.httpRest(wares_server,path,null,wareLiveBean,"PUT");
+		return HttpUtil.httpRest(WARES_SERVER,path,null,wareLiveBean,"PUT");
 	}
 }

@@ -8,10 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 import static com.yijiajiao.root.command.LogicFactory.*;
+import static com.yijiajiao.root.utils.RootUtil.jsonResult;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -153,7 +152,7 @@ public class LogicMapping implements Runnable{
                 break;
             case MarkingPaper:
                 log.info("课中练习/课后作业/模拟考交卷");
-                backValue= baseDataLogic.markingPaper(tag,params);
+                backValue= baseDataLogic.markingPaper(params);
                 break;
             case UpdateWaresLive:
                 log.info("修改课程信息");
@@ -180,17 +179,7 @@ public class LogicMapping implements Runnable{
                 backValue= JSON.toJSONString(ResultBean.getFailResult(404,"没有匹配该请求的路径!"));
                 break;
         }
-        PrintWriter out = null;
-        log.info("__其他系统返回：\n  "+backValue);
-        try {
-            out = response.getWriter();
-            out.print(backValue);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if (out != null){
-                out.close();
-            }
-        }
+        jsonResult(response,backValue);
+        asyncContext.complete();
     }
 }
