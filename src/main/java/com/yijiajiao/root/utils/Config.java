@@ -36,6 +36,7 @@ public class Config {
         return baseConfig.getString(key);
     }
 
+
     public static void main(String[] args) {
         String user = Config.getString("user_server");
         System.out.println(user);

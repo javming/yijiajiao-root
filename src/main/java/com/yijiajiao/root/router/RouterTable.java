@@ -1,5 +1,6 @@
 package com.yijiajiao.root.router;
 
+import com.yijiajiao.root.utils.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ public class RouterTable implements Serializable{
 
     private String                  oauthAddress      = "http://192.168.2.252:8501";
 
-    private final static String     ROUTER_TABLE_FILE = "RouterTable.xml";
+    private final static String     ROUTER_TABLE_FILE = Config.getBaseString("rootable");
 
     private static final Logger log  = LoggerFactory.getLogger(RouterTable.class);
 

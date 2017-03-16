@@ -3,7 +3,6 @@ package com.yijiajiao.root.utils;
 import com.alibaba.fastjson.JSON;
 import com.yijiajiao.root.bean.ResultBean;
 import com.yijiajiao.root.bean.SystemStatus;
-import com.yijiajiao.root.router.RouterInfo;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -29,15 +28,16 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
 
+
 /**
  * @AUTHOR zhaoming@eduspace
  * @CREATE 2017-01-23-10:25
  */
 public class HttpUtil {
 
-    public final static int MAX_TOTAL_CONNECTIONS = Config.getInt("http.maxtotal");
-    public final static int MAX_ROUTE_CONNECTIONS = Config.getInt("http.defaultmaxperroute");
-    private static final String CONTENT_TYPE="application/json";
+    private final static int MAX_TOTAL_CONNECTIONS = Config.getInt("http.maxtotal");
+    private final static int MAX_ROUTE_CONNECTIONS = Config.getInt("http.defaultmaxperroute");
+    private final static String APPLICATION_JSON = "application/json";
     private static final String CHARSET="UTF-8";
     private static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
     private static CloseableHttpClient httpclient = null;
@@ -67,6 +67,7 @@ public class HttpUtil {
             try {
                 httpclient.close();
             } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         if (scanThread != null) {
@@ -74,7 +75,13 @@ public class HttpUtil {
         }
     }
 
+    /** content-type:application/json */
     public static String httpRest(String server,String uri,Map<String, Object> headers,Object body,String method){
+        return httpRest(server,uri,headers,body,method,APPLICATION_JSON);
+    }
+
+    public static String httpRest(String server,String uri,Map<String, Object> headers,Object body,String method,
+                                  String contentType){
         String url = "http://"+server+uri;
         // 参数检查
         if (httpclient == null) {
@@ -91,9 +98,9 @@ public class HttpUtil {
             case "GET":
                 res = httpGet(url,headers,CHARSET);break;
             case "POST":
-                res = httpPost(url,headers,body,CONTENT_TYPE,CHARSET);break;
+                res = httpPost(url,headers,body,contentType);break;
             case "PUT":
-                res = httpPut(url,headers,body,CONTENT_TYPE,CHARSET);break;
+                res = httpPut(url,headers,body,contentType,CHARSET);break;
             case "DELETE":
                 res = httpDelete(url,headers,CHARSET);break;
             default:
@@ -146,17 +153,22 @@ public class HttpUtil {
         return res;
     }
 
-    public static String httpPost(String url,Map<String, Object> headers,Object body,String contentType,
-                                  String charset){
+    public static String httpPost(String url,Map<String, Object> headers,Object body,String contentType){
+        String entity = null;
+        if (body != null) entity = JSON.toJSONString(body);
+        return httpPost(url,headers,entity,contentType,CHARSET);
+    }
+    public static String httpPost(String url,Map<String, Object> headers,String entity,String contentType,
+                                 String charset){
         HttpPost httpPost = new HttpPost(url);
         if(headers!=null&&!headers.isEmpty()){
             httpPost = (HttpPost) setHeaders(httpPost,headers);
         }
         // 设置内容
-        if (body!=null){
+        if (entity!=null){
             ContentType type = ContentType.create(contentType,Charset.forName(charset));
-            StringEntity entity = new StringEntity(JSON.toJSONString(body),type);
-            httpPost.setEntity(entity);
+            StringEntity stringEntity = new StringEntity(entity,type);
+            httpPost.setEntity(stringEntity);
         }
         String res = execute(httpPost, charset);
         httpPost.releaseConnection();
@@ -191,11 +203,11 @@ public class HttpUtil {
     }
 
 
-    public static String httpGet(RouterInfo routerInfo,HttpServletRequest request,String charset){
+    public static String httpGet(String url,HttpServletRequest request){
         URIBuilder builder = null;
         URI uri = null;
         try {
-            builder = new URIBuilder(routerInfo.getMappingURL());
+            builder = new URIBuilder(url);
             for (java.util.Enumeration<String> e = request.getParameterNames(); e.hasMoreElements();) {
                 String name = e.nextElement();
                 builder.setParameter(name, request.getParameter(name));
@@ -208,16 +220,14 @@ public class HttpUtil {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
             String next = headerNames.nextElement();
-            httpGet.addHeader(next,request.getHeader(next));
+            httpGet.setHeader(next,request.getHeader(next));
         }
-        httpGet.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
-        httpGet.setHeader("Accept-Encoding", "gzip, deflate");
         CloseableHttpResponse response = null;
         try {
             response = httpclient.execute(httpGet,HttpClientContext.create());
             // 转换结果
             HttpEntity entity = response.getEntity();
-            return EntityUtils.toString(entity, charset);
+            return EntityUtils.toString(entity, CHARSET);
         } catch (IOException e) {
             e.printStackTrace();
             return JSON.toJSONString(ResultBean.getFailResult(SystemStatus.SERVER_ERROR));
@@ -233,8 +243,8 @@ public class HttpUtil {
         }
     }
 
-    public static String httpPost(RouterInfo routerInfo, HttpServletRequest request, String charset) {
-        HttpPost httpPost = new HttpPost(routerInfo.getMappingURL());
+    public static String httpPost(String url, HttpServletRequest request) {
+        HttpPost httpPost = new HttpPost(url);
         BasicHttpEntity entity = new BasicHttpEntity();
         InputStream input = null;
         try {
@@ -247,13 +257,14 @@ public class HttpUtil {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
             String next = headerNames.nextElement();
-            httpPost.addHeader(next,request.getHeader(next));
+            httpPost.setHeader(next,request.getHeader(next));
         }
+        httpPost.removeHeaders("Content-Length");
         CloseableHttpResponse response = null;
         try {
             response = httpclient.execute(httpPost,HttpClientContext.create());
             HttpEntity entity1 = response.getEntity();
-            return EntityUtils.toString(entity1,charset);
+            return EntityUtils.toString(entity1,CHARSET);
         } catch (IOException e) {
             e.printStackTrace();
             return JSON.toJSONString(ResultBean.getFailResult(SystemStatus.SERVER_ERROR));
@@ -269,8 +280,8 @@ public class HttpUtil {
         }
     }
 
-    public static String httpPut(RouterInfo routerInfo, HttpServletRequest request, String charset) {
-        HttpPut httpPut = new HttpPut(routerInfo.getMappingURL());
+    public static String httpPut(String url, HttpServletRequest request) {
+        HttpPut httpPut = new HttpPut(url);
         BasicHttpEntity entity = new BasicHttpEntity();
         InputStream input = null;
         try {
@@ -283,13 +294,14 @@ public class HttpUtil {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
             String next = headerNames.nextElement();
-            httpPut.addHeader(next,request.getHeader(next));
+            httpPut.setHeader(next,request.getHeader(next));
         }
+        httpPut.removeHeaders("Content-Length");
         CloseableHttpResponse response = null;
         try {
             response = httpclient.execute(httpPut,HttpClientContext.create());
             HttpEntity entity1 = response.getEntity();
-            return EntityUtils.toString(entity1,charset);
+            return EntityUtils.toString(entity1,CHARSET);
         } catch (IOException e) {
             e.printStackTrace();
             return JSON.toJSONString(ResultBean.getFailResult(SystemStatus.SERVER_ERROR));
@@ -304,11 +316,11 @@ public class HttpUtil {
             httpPut.releaseConnection();
         }
     }
-    public static String httpDelete(RouterInfo routerInfo, HttpServletRequest request, String charset) {
+    public static String httpDelete(String url, HttpServletRequest request) {
         URIBuilder builder = null;
         URI uri = null;
         try {
-            builder = new URIBuilder(routerInfo.getMappingURL());
+            builder = new URIBuilder(url);
             for (java.util.Enumeration<String> e = request.getParameterNames(); e.hasMoreElements();) {
                 String name = e.nextElement();
                 builder.setParameter(name, request.getParameter(name));
@@ -321,13 +333,13 @@ public class HttpUtil {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
             String next = headerNames.nextElement();
-            httpDelete.addHeader(next,request.getHeader(next));
+            httpDelete.setHeader(next,request.getHeader(next));
         }
         CloseableHttpResponse response = null;
         try {
             response = httpclient.execute(httpDelete,HttpClientContext.create());
             HttpEntity entity = response.getEntity();
-            return EntityUtils.toString(entity,charset);
+            return EntityUtils.toString(entity,CHARSET);
         } catch (IOException e) {
             e.printStackTrace();
             return JSON.toJSONString(ResultBean.getFailResult(SystemStatus.SERVER_ERROR));
@@ -342,4 +354,5 @@ public class HttpUtil {
             httpDelete.releaseConnection();
         }
     }
+
 }

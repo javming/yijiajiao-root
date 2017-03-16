@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.yijiajiao.root.bean.ResultBean;
 import com.yijiajiao.root.bean.SystemStatus;
 import com.yijiajiao.root.utils.RootUtil;
-import com.yijiajiao.root.utils.StringUtil;
 import com.yijiajiao.root.utils.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +28,7 @@ public class LoginFilter implements Filter{
 
 		log.info("\n __[请求地址：" + req.getPathInfo() + "]");
 		RouterInfo routerInfo = RouterTable.getByRequestURL(req.getPathInfo(), req.getMethod());
-		if ((routerInfo != null && RouterInfo.LOGIN.equals(routerInfo.getRequestStatus())||
-				StringUtil.contains(req.getPathInfo(),"/command"))
+		if (routerInfo != null && RouterInfo.LOGIN.equals(routerInfo.getRequestStatus())
 				&& !TokenUtil.verifyToken(req.getHeader("token"), req.getHeader("openId"))) {
 			log.error("登录信息已过期或登录信息为空！！！");
 			RootUtil.jsonResult(response, JSON.toJSONString(ResultBean.getFailResult(SystemStatus.TOKEN_TIME_OUT)));

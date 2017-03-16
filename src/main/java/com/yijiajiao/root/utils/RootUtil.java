@@ -10,17 +10,10 @@ import java.io.PrintWriter;
  */
 public class RootUtil {
 
-    public static final String WARES_SERVER = Config.getString("wares_server");
-    public static final String USER_SERVER = Config.getString("user_server");
-    public static final String TEACH_SERVER = Config.getString("teach_server");
-    public static final String SALE_SERVER = Config.getString("sale_server");
-    public static final String SOLUTION_SERVER = Config.getString("solution_server");
-    public static final String FINANCE_SERVER = Config.getString("finance_server");
-    public static final String MSG_SERVER = Config.getString("msg_server");
-    public static final String OSS_SERVER = Config.getString("oss_server");
-    public static final String PROMOTION_SERVER = Config.getString("promotion_server"); 
+
+
     
-    private static final String JSON_CONTENTTYPE = "application/json; charset=utf-8";
+    private static final String JSON_CONTENT_TYPE = "application/json; charset=utf-8";
 
     private static final char[] chr1 = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
@@ -36,13 +29,25 @@ public class RootUtil {
     private static final char[] chr4 = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'A', 'B', 'C', 'D', 'E', 'F'};
 
+    public static String randomCode() {
+        String sRand = "";
+        for (int i = 0; i < 6; i++) {
+            String rand = getRandomChar();
+            sRand = sRand.concat(rand);
+        }
+        return sRand;
+    }
+    private static String getRandomChar() {
+        String randChar = "";
+        randChar = String.valueOf(Math.round(Math.random() * 9));
+        return randChar;
+    }
 
     /**
      *  输出json格式结果
      */
     public static void jsonResult(ServletResponse response, Object object){
-        response.setContentType(JSON_CONTENTTYPE);
-        System.out.println((String)object);
+        response.setContentType(JSON_CONTENT_TYPE);
         PrintWriter out = null;
         try {
             out = response.getWriter();

@@ -9,8 +9,8 @@ import java.util.UUID;
 public class TokenUtil {
 	private static final String WEBCLIENT="E-web";
 	private static final Logger  log  = LoggerFactory.getLogger(TokenUtil.class.getName());
-	public static final int webexpire = Config.getInt("redis.webexpire");
-	public static final int appexpire = Config.getInt("redis.appexpire");
+	public static final int WEB_EXPIRE = Config.getInt("redis.webexpire");
+	public static final int APP_EXPIRE = Config.getInt("redis.appexpire");
 
 	/**
 	 * 验证token
@@ -33,28 +33,28 @@ public class TokenUtil {
 			String value0 = RedisUtil.getValue(key0);
 			String value1 = RedisUtil.getValue(key1);
 			if(token.equals(value0)){
-				RedisUtil.expire(key0+"r", webexpire);
+				RedisUtil.expire(key0+"r", WEB_EXPIRE);
 				b= true;
 			}else if(token.equals(value1)){
-				RedisUtil.expire(key1+"r", appexpire);
+				RedisUtil.expire(key1+"r", APP_EXPIRE);
 				b= true;
 			}
 		}else if(flag0){
 			String value = RedisUtil.getValue(key0);
 			if(token.equals(value)){
-				RedisUtil.expire(key0+"r", webexpire);
+				RedisUtil.expire(key0+"r", WEB_EXPIRE);
 				b= true;
 			}
 		}else if(flag1){
 			String value = RedisUtil.getValue(key1);
 			if(token.equals(value)){
-				RedisUtil.expire(key1+"r", appexpire);
+				RedisUtil.expire(key1+"r", APP_EXPIRE);
 				b= true;
 			}
 		}
 	   	return b;
    	}
-
+   	
 	/**
 	 * 缓存token和refresh_token
 	 * @param openId
@@ -68,16 +68,17 @@ public class TokenUtil {
 		if (WEBCLIENT.equals(clientId)){
 			tokenKey = openId+0;
 			refreshTokenKey = openId+"0r";
-			RedisUtil.setEx(tokenKey,webexpire,token);
-			RedisUtil.setEx(refreshTokenKey,webexpire,refreshToken);
+			RedisUtil.setEx(tokenKey,WEB_EXPIRE,token);
+			RedisUtil.setEx(refreshTokenKey,WEB_EXPIRE,refreshToken);
 		}else {
 			tokenKey = openId+1;
 			refreshTokenKey = openId+"1r";
-			RedisUtil.setEx(tokenKey,appexpire,token);
-			RedisUtil.setEx(refreshTokenKey,appexpire,refreshToken);
+			RedisUtil.setEx(tokenKey,APP_EXPIRE,token);
+			RedisUtil.setEx(refreshTokenKey,APP_EXPIRE,refreshToken);
 		}
 
 	}
+	
 	/**
 	 *	刷新token
 	 * @param openId
@@ -96,8 +97,8 @@ public class TokenUtil {
 			if (refreshToken.equals(refresh)){
 				String token = "TK"+StringUtil.getMD5(openId+refreshToken,2);
 				refreshToken = UUID.randomUUID().toString().trim().replaceAll("-", "");
-				RedisUtil.setEx(tokenKey,webexpire,token);
-				RedisUtil.setEx(refreshTokenKey,webexpire,refreshToken);
+				RedisUtil.setEx(tokenKey,WEB_EXPIRE,token);
+				RedisUtil.setEx(refreshTokenKey,WEB_EXPIRE,refreshToken);
 				tokens[0] = token;
 				tokens[1] = refreshToken;
 			}
@@ -108,8 +109,8 @@ public class TokenUtil {
 			if (refreshToken.equals(refresh)){
 				String token = "TK"+StringUtil.getMD5(openId+refreshToken,2);
 				refreshToken = UUID.randomUUID().toString().trim().replaceAll("-", "");
-				RedisUtil.setEx(tokenKey,appexpire,token);
-				RedisUtil.setEx(refreshTokenKey,appexpire,refreshToken);
+				RedisUtil.setEx(tokenKey,APP_EXPIRE,token);
+				RedisUtil.setEx(refreshTokenKey,APP_EXPIRE,refreshToken);
 				tokens[0] = token;
 				tokens[1] = refreshToken;
 			}
@@ -119,4 +120,5 @@ public class TokenUtil {
 		}
 		return tokens;
 	}
+	
 }

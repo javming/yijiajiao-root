@@ -1,6 +1,5 @@
 package com.yijiajiao.root.router;
 
-import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,6 @@ import static com.yijiajiao.root.utils.RootUtil.jsonResult;
 public class HandleThread extends Thread {
 
     private static final Logger log = LoggerFactory.getLogger(HandleThread.class);
-    private static final String CHARSET = Config.getString("charset");
     private HttpServletRequest  request;
     private HttpServletResponse response;
     private AsyncContext        asyncContext;
@@ -39,21 +37,20 @@ public class HandleThread extends Thread {
             String res = null;
             switch (request.getMethod()){
                 case "GET":
-                    res = HttpUtil.httpGet(routerInfo,request,CHARSET);
+                    res = HttpUtil.httpGet(routerInfo.getMappingURL(),request);
                     break;
                 case "POST":
-                    res = HttpUtil.httpPost(routerInfo,request,CHARSET);
+                    res = HttpUtil.httpPost(routerInfo.getMappingURL(),request);
                     break;
                 case "PUT":
-                    res = HttpUtil.httpPut(routerInfo,request,CHARSET);
+                    res = HttpUtil.httpPut(routerInfo.getMappingURL(),request);
                     break;
                 case "DELETE":
-                    res = HttpUtil.httpDelete(routerInfo,request,CHARSET);
+                    res = HttpUtil.httpDelete(routerInfo.getMappingURL(),request);
                     break;
             }
             log.info("__其他系统返回：\n  "+res);
             jsonResult(response,res);
-
         }
         asyncContext.complete();
     }
