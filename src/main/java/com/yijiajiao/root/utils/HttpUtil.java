@@ -13,7 +13,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +41,6 @@ public class HttpUtil {
     private static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
     private static CloseableHttpClient httpclient = null;
     private static IdleConnectionMonitorThread scanThread = null;
-    private static HttpContext context =HttpClientContext.create();
 
     /**
      * 初始化client对象.
