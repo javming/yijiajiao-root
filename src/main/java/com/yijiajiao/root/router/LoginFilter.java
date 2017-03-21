@@ -27,8 +27,6 @@ public class LoginFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-
-		log.info("\n __[请求地址：" + req.getPathInfo() + "]");
 		RouterInfo routerInfo = RouterTable.getByRequestURL(req.getPathInfo(), req.getMethod());
 		if ("/command".equals(req.getPathInfo()) || "/command/".equals(req.getPathInfo())) {
 			BufferedReader reader = req.getReader();

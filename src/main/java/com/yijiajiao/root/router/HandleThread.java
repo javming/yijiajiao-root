@@ -7,6 +7,11 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.yijiajiao.root.utils.RootUtil.jsonResult;
 
@@ -37,21 +42,51 @@ public class HandleThread extends Thread {
             String res = null;
             switch (request.getMethod()){
                 case "GET":
-                    res = HttpUtil.httpGet(routerInfo.getMappingURL(),request);
+                    res = HttpUtil.httpRest(routerInfo.getMappingURL()+"?",request.getQueryString(),getHeaders(),
+                            null,"GET");
                     break;
                 case "POST":
-                    res = HttpUtil.httpPost(routerInfo.getMappingURL(),request);
+                    res = HttpUtil.httpRest(routerInfo.getMappingURL(),"",getHeaders(),getContent(),"POST");
                     break;
                 case "PUT":
-                    res = HttpUtil.httpPut(routerInfo.getMappingURL(),request);
+                    res = HttpUtil.httpRest(routerInfo.getMappingURL(),"",getHeaders(),getContent(),"PUT");
                     break;
                 case "DELETE":
-                    res = HttpUtil.httpDelete(routerInfo.getMappingURL(),request);
+                    res = HttpUtil.httpRest(routerInfo.getMappingURL()+"?",request.getQueryString(),getHeaders(),
+                            null,"DELETE");
                     break;
             }
             log.info("__其他系统返回：\n  "+res);
             jsonResult(response,res);
         }
         asyncContext.complete();
+    }
+
+    private Map<String,Object> getHeaders(){
+        Map<String,Object> headers = new HashMap<>();
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()){
+            String next = headerNames.nextElement();
+            headers.put(next,request.getHeader(next));
+        }
+        headers.remove("Content-Length");
+        headers.remove("Transfer-encoding");
+        headers.remove("Host");
+        return headers;
+    }
+
+    private Object getContent(){
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = request.getReader()) {
+            sb = new StringBuilder();
+            String line ;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+
     }
 }
