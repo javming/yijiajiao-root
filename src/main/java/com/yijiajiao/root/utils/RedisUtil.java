@@ -15,21 +15,20 @@ import java.util.Set;
  */
 public class RedisUtil {
 	private static final Logger log =LoggerFactory.getLogger(RedisUtil.class);
-	private static String redisIp = Config.getString("redis.ip");
-	private static int redisPort = Config.getInt("redis.port");
-	private static int active = Config.getInt("redis.maxactive");
-	private static int idle = Config.getInt("redis.maxidle");
-	private static int wait = Config.getInt("redis.maxwait");
 	private static JedisPool pool;
     /**
      * 初始化Redis连接池
      */
     private static void initJedisPool(){
 		JedisPoolConfig config = new JedisPoolConfig();
-		config.setMaxIdle(idle);
+		// 最大空闲连接数, 控制一个pool最多有多少个状态为idle(空闲的)的jedis实例。
+		config.setMaxIdle(Config.getInt("redis.maxIdle"));
+		//最大连接数
+		config.setMaxTotal(Config.getInt("redis.maxTotal"));
+		// 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的
 		config.setTestOnBorrow(true);
-		pool = new JedisPool(config, redisIp,redisPort);
-		log.info("jedis连接池初始化完成！");
+		pool = new JedisPool(config, Config.getString("redis.ip"),Config.getInt("redis.port"));
+		log.info("jedis-pool init success!");
     }
 
 	/**

@@ -109,7 +109,7 @@ public class HttpUtil {
         Iterator i = headers.entrySet().iterator();
         while (i.hasNext()) {
             Map.Entry en = (Map.Entry) i.next();
-            request.addHeader((String) en.getKey(), (String) en.getValue());
+            request.setHeader((String) en.getKey(), (String) en.getValue());
         }
         return request;
     }

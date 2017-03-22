@@ -42,6 +42,7 @@ public class LogicMapping implements Runnable{
     @Override
     public void run() {
         CommandBean command = getBody(this.request);
+        log.info("__command:"+command);
         String uri = null;
         try {
             uri = Config.getBaseString(command.getCmd());
@@ -59,21 +60,15 @@ public class LogicMapping implements Runnable{
 
     private CommandBean getBody(HttpServletRequest request){
         StringBuilder sb = new StringBuilder();
-        BufferedReader reader = null;
-        try {
-            reader = request.getReader();
+        try (BufferedReader reader = request.getReader()){
             sb = new StringBuilder();
             String line ;
             while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
-            try {
-                reader.close();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
         }
         return JSON.parseObject(sb.toString(),CommandBean.class);
     }

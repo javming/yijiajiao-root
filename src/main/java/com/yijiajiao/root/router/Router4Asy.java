@@ -46,8 +46,7 @@ public class Router4Asy extends HttpServlet {
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String pathInfo = request.getPathInfo();
-        log.info("请求信息：\n __[request_path:" + pathInfo+"]\n __[query_param:"+request.getQueryString()
+        log.info("请求信息：\n __[request_path:" + request.getPathInfo() +"]\n __[query_param:"+request.getQueryString()
                 +"]\n __[request_method:"+request.getMethod()+"]");
 
         AsyncContext aCtx = request.startAsync(request, response);

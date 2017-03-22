@@ -51,4 +51,15 @@ public class CommandBean {
     public void setParams(Object params) {
         this.params = params;
     }
+
+    @Override
+    public String toString() {
+        return "CommandBean{" +
+                "cmd='" + cmd + '\'' +
+                ", tag='" + tag + '\'' +
+                ", token='" + token + '\'' +
+                ", openId='" + openId + '\'' +
+                ", params=" + params +
+                '}';
+    }
 }

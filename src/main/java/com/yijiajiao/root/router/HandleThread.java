@@ -1,5 +1,6 @@
 package com.yijiajiao.root.router;
 
+import com.alibaba.fastjson.JSON;
 import com.yijiajiao.root.utils.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,22 +39,21 @@ public class HandleThread extends Thread {
     public void run(){
         routerInfo = RouterTable.getByRequestURL(request.getPathInfo(), request.getMethod());
         if (null!= routerInfo){
-            log.info("__请求其他系统url:"+routerInfo.getMappingURL());
+            String url = routerInfo.getMappingURL();
+            log.info("__请求其他系统url:"+url);
             String res = null;
             switch (request.getMethod()){
                 case "GET":
-                    res = HttpUtil.httpRest(routerInfo.getMappingURL()+"?",request.getQueryString(),getHeaders(),
-                            null,"GET");
+                    res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(), null,"GET");
                     break;
                 case "POST":
-                    res = HttpUtil.httpRest(routerInfo.getMappingURL(),"",getHeaders(),getContent(),"POST");
+                    res = HttpUtil.httpRest(url,"",getHeaders(),getContent(),"POST");
                     break;
                 case "PUT":
-                    res = HttpUtil.httpRest(routerInfo.getMappingURL(),"",getHeaders(),getContent(),"PUT");
+                    res = HttpUtil.httpRest(url,"",getHeaders(),getContent(),"PUT");
                     break;
                 case "DELETE":
-                    res = HttpUtil.httpRest(routerInfo.getMappingURL()+"?",request.getQueryString(),getHeaders(),
-                            null,"DELETE");
+                    res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(),null,"DELETE");
                     break;
             }
             log.info("__其他系统返回：\n  "+res);
@@ -70,7 +70,7 @@ public class HandleThread extends Thread {
             headers.put(next,request.getHeader(next));
         }
         headers.remove("Content-Length");
-        headers.remove("Transfer-encoding");
+        headers.remove("Transfer-Encoding");
         headers.remove("Host");
         return headers;
     }
@@ -83,10 +83,10 @@ public class HandleThread extends Thread {
             while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return sb.toString();
-
+        return JSON.parseObject(sb.toString());
     }
 }

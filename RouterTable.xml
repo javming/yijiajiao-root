@@ -2478,7 +2478,7 @@
 						<string>GET</string>
 					</void>
 					<void property="requestStatus">
-						<string>LOGIN</string>
+						<string>UNLOGIN</string>
 					</void>
 					<void property="requestURL">
 						<string>/findAttentionStu</string>

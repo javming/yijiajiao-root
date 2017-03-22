@@ -10,13 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 
-@WebFilter(filterName = "loginFilter",value = "/*",asyncSupported = true)
 public class LoginFilter implements Filter{
 	private static final Logger log = LoggerFactory.getLogger(LoginFilter.class);
 
@@ -26,30 +22,27 @@ public class LoginFilter implements Filter{
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
 		RouterInfo routerInfo = RouterTable.getByRequestURL(req.getPathInfo(), req.getMethod());
 		if ("/command".equals(req.getPathInfo()) || "/command/".equals(req.getPathInfo())) {
-			BufferedReader reader = req.getReader();
-			StringBuilder sb = new StringBuilder();
-			String line;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line);
-			}
-			CommandBean command = JSON.parseObject(sb.toString(), CommandBean.class);
+			ServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(req);
+			String body = HttpHelper.getBodyString(requestWrapper);
+			CommandBean command = JSON.parseObject(body, CommandBean.class);
 			if(!TokenUtil.verifyToken(command.getToken(), command.getOpenId())){
 				ResultBean result = new ResultBean();
 				result.setFailMsg(SystemStatus.TOKEN_TIME_OUT);
 				RootUtil.jsonResult(response,result);
-				reader.close();
 				return;
 			}
+			chain.doFilter(requestWrapper,response);
 		} else if (routerInfo != null && RouterInfo.LOGIN.equals(routerInfo.getRequestStatus())
 				&& !TokenUtil.verifyToken(req.getHeader("token"), req.getHeader("openId"))) {
 			log.error("登录信息已过期或登录信息为空！！！");
 			RootUtil.jsonResult(response, JSON.toJSONString(ResultBean.getFailResult(SystemStatus.TOKEN_TIME_OUT)));
 			return;
+		}else {
+			chain.doFilter(request,response);
 		}
-		chain.doFilter(request,response);
+
 	}
 
 	public void destroy() {
