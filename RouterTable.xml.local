@@ -8,7 +8,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/verifyphone</string>
+						<string>http://127.0.0.1:22060/user/verifyphone</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -30,7 +30,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/get/verifycode</string>
+						<string>http://127.0.0.1:22060/user/get/verifycode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -52,7 +52,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/create</string>
+						<string>http://127.0.0.1:22060/user/create</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -74,7 +74,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/planRegister</string>
+						<string>http://127.0.0.1:22060/user/planRegister</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -96,7 +96,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/login</string>
+						<string>http://127.0.0.1:22060/user/login</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -118,7 +118,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/focus</string>
+						<string>http://127.0.0.1:22060/oss/focus</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -140,7 +140,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/showbill</string>
+						<string>http://127.0.0.1:22060/oss/showbill</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -162,7 +162,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/showgoods</string>
+						<string>http://127.0.0.1:22060/oss/showgoods</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -250,7 +250,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findteacher</string>
+						<string>http://127.0.0.1:22060/user/findteacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -272,7 +272,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/wareslist</string>
+						<string>http://127.0.0.1:22060/wares/wareslist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -294,7 +294,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/waresInfoById</string>
+						<string>http://127.0.0.1:22060/wares/waresInfoById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -404,7 +404,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getwaresbydate</string>
+						<string>http://127.0.0.1:22060/wares/getwaresbydate</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -426,7 +426,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/timetable</string>
+						<string>http://127.0.0.1:22060/wares/timetable</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -448,7 +448,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/urlandpass</string>
+						<string>http://127.0.0.1:22060/wares/urlandpass</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -470,7 +470,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getViedoById</string>
+						<string>http://127.0.0.1:22060/wares/getViedoById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -492,7 +492,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getsign</string>
+						<string>http://127.0.0.1:22060/sale/getsign</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -514,7 +514,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/orderlist</string>
+						<string>http://127.0.0.1:22060/sale/orderlist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -536,7 +536,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/examtest</string>
+						<string>http://127.0.0.1:22060/wares/examtest</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -558,7 +558,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findteacherstore</string>
+						<string>http://127.0.0.1:22060/user/findteacherstore</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -580,7 +580,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/checktime</string>
+						<string>http://127.0.0.1:22060/wares/checktime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -602,7 +602,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findteacherpermission</string>
+						<string>http://127.0.0.1:22060/user/findteacherpermission</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -624,7 +624,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/orderById</string>
+						<string>http://127.0.0.1:22060/sale/orderById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -646,7 +646,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/delOrderById</string>
+						<string>http://127.0.0.1:22060/sale/delOrderById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -668,7 +668,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/countWaresByteacherId</string>
+						<string>http://127.0.0.1:22060/wares/countWaresByteacherId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -690,7 +690,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/waresListByType</string>
+						<string>http://127.0.0.1:22060/wares/waresListByType</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -712,7 +712,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/stutimetable</string>
+						<string>http://127.0.0.1:22060/sale/stutimetable</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -734,7 +734,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findTestCode</string>
+						<string>http://127.0.0.1:22060/user/findTestCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -756,7 +756,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/appraiselist</string>
+						<string>http://127.0.0.1:22060/sale/appraiselist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -778,7 +778,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/stutimetableinfo</string>
+						<string>http://127.0.0.1:22060/sale/stutimetableinfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -800,7 +800,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/finduserinfo</string>
+						<string>http://127.0.0.1:22060/user/finduserinfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -822,7 +822,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getstage</string>
+						<string>http://127.0.0.1:22060/wares/getstage</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -844,7 +844,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getGradeByStage</string>
+						<string>http://127.0.0.1:22060/wares/getGradeByStage</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -866,7 +866,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getSubjectByGrade</string>
+						<string>http://127.0.0.1:22060/wares/getSubjectByGrade</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -888,7 +888,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getViedoByExamination</string>
+						<string>http://127.0.0.1:22060/wares/getViedoByExamination</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -910,7 +910,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/appraiselist4teacher</string>
+						<string>http://127.0.0.1:22060/sale/appraiselist4teacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -932,7 +932,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/studentClassList</string>
+						<string>http://127.0.0.1:22060/sale/studentClassList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -954,7 +954,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findTestCode</string>
+						<string>http://127.0.0.1:22060/user/findTestCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -976,7 +976,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/orderByorderNo</string>
+						<string>http://127.0.0.1:22060/sale/orderByorderNo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -998,7 +998,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/recommendTeacher</string>
+						<string>http://127.0.0.1:22060/oss/recommendTeacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1020,7 +1020,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getAnswering</string>
+						<string>http://127.0.0.1:22060/solution/getAnswering</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1042,7 +1042,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getAnsweringById</string>
+						<string>http://127.0.0.1:22060/solution/getAnsweringById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1064,7 +1064,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getAnswered</string>
+						<string>http://127.0.0.1:22060/solution/getAnswered</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1086,7 +1086,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getAnsweredById</string>
+						<string>http://127.0.0.1:22060/solution/getAnsweredById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1108,7 +1108,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getDoubtDetail</string>
+						<string>http://127.0.0.1:22060/solution/getDoubtDetail</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1130,7 +1130,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/finance/getRemainAnswerTime</string>
+						<string>http://127.0.0.1:22060/finance/getRemainAnswerTime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1152,7 +1152,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/applysolutionpermission</string>
+						<string>http://127.0.0.1:22060/user/applysolutionpermission</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1174,7 +1174,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/applyStatusBean</string>
+						<string>http://127.0.0.1:22060/user/applyStatusBean</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1196,7 +1196,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/appraiseListByCurriculumId</string>
+						<string>http://127.0.0.1:22060/sale/appraiseListByCurriculumId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1218,7 +1218,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/isUsefulAppraise</string>
+						<string>http://127.0.0.1:22060/sale/isUsefulAppraise</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1240,7 +1240,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/verifyResetPass</string>
+						<string>http://127.0.0.1:22060/user/verifyResetPass</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1262,7 +1262,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/resetPass</string>
+						<string>http://127.0.0.1:22060/user/resetPass</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -1284,7 +1284,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/exitGrab</string>
+						<string>http://127.0.0.1:22060/solution/exitGrab</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1306,7 +1306,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/mobilWaresListByTeacherId</string>
+						<string>http://127.0.0.1:22060/wares/mobilWaresListByTeacherId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1328,7 +1328,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/mobilWaresListByTeacherIdAndTime</string>
+						<string>http://127.0.0.1:22060/wares/mobilWaresListByTeacherIdAndTime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1350,7 +1350,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/mobilWaresInfoByWaresId</string>
+						<string>http://127.0.0.1:22060/wares/mobilWaresInfoByWaresId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1372,7 +1372,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/updatePass</string>
+						<string>http://127.0.0.1:22060/user/updatePass</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -1394,7 +1394,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/myStudents</string>
+						<string>http://127.0.0.1:22060/sale/myStudents</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1416,7 +1416,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getVediosById</string>
+						<string>http://127.0.0.1:22060/sale/getVediosById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1438,7 +1438,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getsolutionteacherList</string>
+						<string>http://127.0.0.1:22060/solution/getsolutionteacherList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1460,7 +1460,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getOrderList4Teacher</string>
+						<string>http://127.0.0.1:22060/sale/getOrderList4Teacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1482,7 +1482,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findinviteuser</string>
+						<string>http://127.0.0.1:22060/user/findinviteuser</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1504,7 +1504,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/releaseStatus</string>
+						<string>http://127.0.0.1:22060/wares/releaseStatus</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1526,7 +1526,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/delvideo</string>
+						<string>http://127.0.0.1:22060/wares/delvideo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1548,7 +1548,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/exitSolution</string>
+						<string>http://127.0.0.1:22060/solution/exitSolution</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1570,7 +1570,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/choseReturnOrder</string>
+						<string>http://127.0.0.1:22060/sale/choseReturnOrder</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1592,7 +1592,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/delOrder4Teacher</string>
+						<string>http://127.0.0.1:22060/sale/delOrder4Teacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1614,7 +1614,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/orderInfo4Teacher</string>
+						<string>http://127.0.0.1:22060/sale/orderInfo4Teacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1636,7 +1636,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/createSolutionCount</string>
+						<string>http://127.0.0.1:22060/solution/createSolutionCount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1658,7 +1658,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/solutionWaresList</string>
+						<string>http://127.0.0.1:22060/sale/solutionWaresList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1680,7 +1680,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/ratio</string>
+						<string>http://127.0.0.1:22060/solution/ratio</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1702,7 +1702,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/solutionList</string>
+						<string>http://127.0.0.1:22060/solution/solutionList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1724,7 +1724,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/solutionInfo</string>
+						<string>http://127.0.0.1:22060/solution/solutionInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1746,7 +1746,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/studentWaresList</string>
+						<string>http://127.0.0.1:22060/sale/studentWaresList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1768,7 +1768,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/examList</string>
+						<string>http://127.0.0.1:22060/wares/examList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1790,7 +1790,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/answerInfoById</string>
+						<string>http://127.0.0.1:22060/wares/answerInfoById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1812,7 +1812,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/examStatistic</string>
+						<string>http://127.0.0.1:22060/wares/examStatistic</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1834,7 +1834,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/myStu4List</string>
+						<string>http://127.0.0.1:22060/sale/myStu4List</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1856,7 +1856,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/videoCountByStatus</string>
+						<string>http://127.0.0.1:22060/wares/videoCountByStatus</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1878,7 +1878,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/tradingList</string>
+						<string>http://127.0.0.1:22060/sale/tradingList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1900,7 +1900,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/countAccount</string>
+						<string>http://127.0.0.1:22060/sale/countAccount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1922,7 +1922,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findUserByIdCard</string>
+						<string>http://127.0.0.1:22060/user/findUserByIdCard</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1944,7 +1944,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findPermissionInfo</string>
+						<string>http://127.0.0.1:22060/user/findPermissionInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1966,7 +1966,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/popularity</string>
+						<string>http://127.0.0.1:22060/wares/popularity</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -1988,7 +1988,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findcollect</string>
+						<string>http://127.0.0.1:22060/user/findcollect</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2010,7 +2010,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/collect</string>
+						<string>http://127.0.0.1:22060/user/collect</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2032,7 +2032,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findCollectById</string>
+						<string>http://127.0.0.1:22060/user/findCollectById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2054,7 +2054,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/curriculumTypeCount</string>
+						<string>http://127.0.0.1:22060/sale/curriculumTypeCount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2076,7 +2076,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/delcollect</string>
+						<string>http://127.0.0.1:22060/user/delcollect</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2098,7 +2098,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/finance/queryAlipayByOpenId</string>
+						<string>http://127.0.0.1:22060/finance/queryAlipayByOpenId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2120,7 +2120,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/finance/delAlipayByOpenId</string>
+						<string>http://127.0.0.1:22060/finance/delAlipayByOpenId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2142,7 +2142,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/invitecode</string>
+						<string>http://127.0.0.1:22060/user/invitecode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2164,7 +2164,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/mymsglist</string>
+						<string>http://127.0.0.1:22060/msg/mymsglist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2186,7 +2186,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/count</string>
+						<string>http://127.0.0.1:22060/msg/count</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2208,7 +2208,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/countByType</string>
+						<string>http://127.0.0.1:22060/msg/countByType</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2230,7 +2230,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/setRead</string>
+						<string>http://127.0.0.1:22060/msg/setRead</string>
 					</void>
 					<void property="requestMothed">
 						<string>PUT</string>
@@ -2252,7 +2252,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/setDel</string>
+						<string>http://127.0.0.1:22060/msg/setDel</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2274,7 +2274,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/mynewmsg</string>
+						<string>http://127.0.0.1:22060/msg/mynewmsg</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2296,7 +2296,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/getmsgset</string>
+						<string>http://127.0.0.1:22060/msg/getmsgset</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2318,7 +2318,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/knowledges</string>
+						<string>http://127.0.0.1:22060/resource/knowledges</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2340,7 +2340,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/questionByKnowledge</string>
+						<string>http://127.0.0.1:22060/resource/questionByKnowledge</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2362,7 +2362,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/examListLogin</string>
+						<string>http://127.0.0.1:22060/resource/examListLogin</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2384,7 +2384,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/teacherWork</string>
+						<string>http://127.0.0.1:22060/sale/teacherWork</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2406,7 +2406,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/insertAttention</string>
+						<string>http://127.0.0.1:22060/user/insertAttention</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2428,7 +2428,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/cancelAttention</string>
+						<string>http://127.0.0.1:22060/user/cancelAttention</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2450,7 +2450,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findAttentionTeach</string>
+						<string>http://127.0.0.1:22060/user/findAttentionTeach</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2472,7 +2472,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findAttentionStu</string>
+						<string>http://127.0.0.1:22060/user/findAttentionStu</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2494,7 +2494,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/makeqrcode</string>
+						<string>http://127.0.0.1:22060/user/makeqrcode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2516,7 +2516,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/qrcodeanduser</string>
+						<string>http://127.0.0.1:22060/user/qrcodeanduser</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -2538,7 +2538,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/tosearch</string>
+						<string>http://127.0.0.1:22060/resource/tosearch</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2560,7 +2560,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findroombytime</string>
+						<string>http://127.0.0.1:22060/user/findroombytime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2582,7 +2582,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findfacingteachbytime</string>
+						<string>http://127.0.0.1:22060/user/findfacingteachbytime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2604,7 +2604,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/liveSupervise</string>
+						<string>http://127.0.0.1:22060/wares/liveSupervise</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2626,7 +2626,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findInterviewDetail</string>
+						<string>http://127.0.0.1:22060/user/findInterviewDetail</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2648,7 +2648,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/liveVideoPlayback</string>
+						<string>http://127.0.0.1:22060/wares/liveVideoPlayback</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2670,7 +2670,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/msg/getMsgStation</string>
+						<string>http://127.0.0.1:22060/msg/getMsgStation</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2692,7 +2692,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findattentionexist</string>
+						<string>http://127.0.0.1:22060/user/findattentionexist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2714,7 +2714,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/signin</string>
+						<string>http://127.0.0.1:22060/user/signin</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2736,7 +2736,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/integralRuleList</string>
+						<string>http://127.0.0.1:22060/oss/integralRuleList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2758,7 +2758,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findIntegralDetail</string>
+						<string>http://127.0.0.1:22060/user/findIntegralDetail</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2780,7 +2780,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findSigninList</string>
+						<string>http://127.0.0.1:22060/user/findSigninList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2802,7 +2802,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/nowledgeTree</string>
+						<string>http://127.0.0.1:22060/resource/nowledgeTree</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2824,7 +2824,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getStudent</string>
+						<string>http://127.0.0.1:22060/sale/getStudent</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2846,7 +2846,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/smallList</string>
+						<string>http://127.0.0.1:22060/resource/smallList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2868,7 +2868,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/moduleListBySmall</string>
+						<string>http://127.0.0.1:22060/resource/moduleListBySmall</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2890,7 +2890,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/moduleInfoByCode</string>
+						<string>http://127.0.0.1:22060/resource/moduleInfoByCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2912,7 +2912,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getPackageReord</string>
+						<string>http://127.0.0.1:22060/solution/getPackageReord</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2934,7 +2934,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getPackageById</string>
+						<string>http://127.0.0.1:22060/solution/getPackageById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2956,7 +2956,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/duration</string>
+						<string>http://127.0.0.1:22060/solution/duration</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -2978,7 +2978,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/packagePutawayOrDown</string>
+						<string>http://127.0.0.1:22060/solution/packagePutawayOrDown</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3000,7 +3000,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/baseCourseAndStage</string>
+						<string>http://127.0.0.1:22060/resource/baseCourseAndStage</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3022,7 +3022,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getMyDoubtTeachers</string>
+						<string>http://127.0.0.1:22060/solution/getMyDoubtTeachers</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3044,7 +3044,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getSolutions</string>
+						<string>http://127.0.0.1:22060/solution/getSolutions</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3066,7 +3066,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getRecDoubtTeachers</string>
+						<string>http://127.0.0.1:22060/solution/getRecDoubtTeachers</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3088,7 +3088,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getMyPackages</string>
+						<string>http://127.0.0.1:22060/solution/getMyPackages</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3110,7 +3110,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getDetail</string>
+						<string>http://127.0.0.1:22060/solution/getDetail</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3132,7 +3132,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getMyAnswerList</string>
+						<string>http://127.0.0.1:22060/sale/getMyAnswerList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3154,7 +3154,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findLocation</string>
+						<string>http://127.0.0.1:22060/user/findLocation</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3176,7 +3176,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getFeedBackReasons</string>
+						<string>http://127.0.0.1:22060/solution/getFeedBackReasons</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3198,7 +3198,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/questionTypeBySubject</string>
+						<string>http://127.0.0.1:22060/resource/questionTypeBySubject</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3220,7 +3220,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/questions</string>
+						<string>http://127.0.0.1:22060/resource/questions</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3242,7 +3242,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/knowledgesNew</string>
+						<string>http://127.0.0.1:22060/resource/knowledgesNew</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3264,7 +3264,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/questionsinfo</string>
+						<string>http://127.0.0.1:22060/resource/questionsinfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3286,7 +3286,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getMyCount</string>
+						<string>http://127.0.0.1:22060/sale/getMyCount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3308,7 +3308,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getMyCountUser</string>
+						<string>http://127.0.0.1:22060/user/getMyCountUser</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3330,7 +3330,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/oss/baofenUserAdd</string>
+						<string>http://127.0.0.1:22060/oss/baofenUserAdd</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -3352,7 +3352,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getPackageByGrade</string>
+						<string>http://127.0.0.1:22060/solution/getPackageByGrade</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3374,7 +3374,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getPackagesByOpenId</string>
+						<string>http://127.0.0.1:22060/solution/getPackagesByOpenId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3396,7 +3396,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/planRegister</string>
+						<string>http://127.0.0.1:22060/user/planRegister</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -3418,7 +3418,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getEasemobId</string>
+						<string>http://127.0.0.1:22060/solution/getEasemobId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3440,7 +3440,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/verifycode</string>
+						<string>http://127.0.0.1:22060/user/verifycode</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -3462,7 +3462,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getSolId</string>
+						<string>http://127.0.0.1:22060/solution/getSolId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3484,7 +3484,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/syllabusPhone</string>
+						<string>http://127.0.0.1:22060/sale/syllabusPhone</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3528,7 +3528,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/findDiagnosislist</string>
+						<string>http://127.0.0.1:22060/user/findDiagnosislist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3550,7 +3550,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getUserDiaglist</string>
+						<string>http://127.0.0.1:22060/user/getUserDiaglist</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3572,7 +3572,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getDiagpaperByid</string>
+						<string>http://127.0.0.1:22060/user/getDiagpaperByid</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3594,7 +3594,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/getMyFameCourseAndSolutionCount</string>
+						<string>http://127.0.0.1:22060/resource/getMyFameCourseAndSolutionCount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3616,7 +3616,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getMyPapers</string>
+						<string>http://127.0.0.1:22060/wares/getMyPapers</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3638,7 +3638,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getDiagnosisById</string>
+						<string>http://127.0.0.1:22060/user/getDiagnosisById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3660,7 +3660,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/solution/getQuestionByRand</string>
+						<string>http://127.0.0.1:22060/solution/getQuestionByRand</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3682,7 +3682,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/getPaperInfo</string>
+						<string>http://127.0.0.1:22060/wares/getPaperInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3704,7 +3704,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getDiagResult</string>
+						<string>http://127.0.0.1:22060/user/getDiagResult</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3726,7 +3726,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getDiagResultDetail</string>
+						<string>http://127.0.0.1:22060/user/getDiagResultDetail</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3748,7 +3748,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/papersOnYjj</string>
+						<string>http://127.0.0.1:22060/resource/papersOnYjj</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3770,7 +3770,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/todayCourse</string>
+						<string>http://127.0.0.1:22060/wares/todayCourse</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3792,7 +3792,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/paperCommitInfoByStudent</string>
+						<string>http://127.0.0.1:22060/wares/paperCommitInfoByStudent</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3814,7 +3814,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/paperCommitInfoByTeacher</string>
+						<string>http://127.0.0.1:22060/wares/paperCommitInfoByTeacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3836,7 +3836,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/gradeBySubject</string>
+						<string>http://127.0.0.1:22060/resource/gradeBySubject</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3858,7 +3858,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/paperInfoByStudent</string>
+						<string>http://127.0.0.1:22060/wares/paperInfoByStudent</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3880,7 +3880,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getDiscountById</string>
+						<string>http://127.0.0.1:22060/user/getDiscountById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3902,7 +3902,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/deleteWaresById</string>
+						<string>http://127.0.0.1:22060/wares/deleteWaresById</string>
 					</void>
 					<void property="requestMothed">
 						<string>DELETE</string>
@@ -3924,7 +3924,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/resource/getFromRedis</string>
+						<string>http://127.0.0.1:22060/resource/getFromRedis</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -3946,7 +3946,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/checkTime</string>
+						<string>http://127.0.0.1:22060/sale/checkTime</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -3968,7 +3968,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/liveWebUrl</string>
+						<string>http://127.0.0.1:22060/wares/liveWebUrl</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -3990,7 +3990,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getMyProxtInfoList</string>
+						<string>http://127.0.0.1:22060/user/getMyProxtInfoList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4012,7 +4012,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getSecondProxyInfoList</string>
+						<string>http://127.0.0.1:22060/user/getSecondProxyInfoList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4034,7 +4034,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getMyOrderInfoList</string>
+						<string>http://127.0.0.1:22060/user/getMyOrderInfoList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4056,7 +4056,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/backUrlList</string>
+						<string>http://127.0.0.1:22060/wares/backUrlList</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4078,7 +4078,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/backUrlInfo</string>
+						<string>http://127.0.0.1:22060/wares/backUrlInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4100,7 +4100,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getMyProxyInfo</string>
+						<string>http://127.0.0.1:22060/user/getMyProxyInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4122,7 +4122,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getSecondProxyInfo</string>
+						<string>http://127.0.0.1:22060/user/getSecondProxyInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4144,7 +4144,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getMyOrderInfo</string>
+						<string>http://127.0.0.1:22060/user/getMyOrderInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4166,7 +4166,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/getPhoneVerifyCode</string>
+						<string>http://127.0.0.1:22060/user/getPhoneVerifyCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4188,7 +4188,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/verifyPhoneCode</string>
+						<string>http://127.0.0.1:22060/user/verifyPhoneCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4210,7 +4210,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/user/resetPassword</string>
+						<string>http://127.0.0.1:22060/user/resetPassword</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4232,7 +4232,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getDiscountCoupon</string>
+						<string>http://127.0.0.1:22060/sale/getDiscountCoupon</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4276,7 +4276,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/wares/appMtgInfo</string>
+						<string>http://127.0.0.1:22060/wares/appMtgInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4298,7 +4298,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getUserDiscount</string>
+						<string>http://127.0.0.1:22060/sale/getUserDiscount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4320,7 +4320,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/getMyDiscount</string>
+						<string>http://127.0.0.1:22060/sale/getMyDiscount</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4342,7 +4342,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/thirdParty/login</string>
+						<string>http://127.0.0.1:22060/thirdParty/login</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -4364,7 +4364,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/operateCouponState</string>
+						<string>http://127.0.0.1:22060/promotion/operateCouponState</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4386,7 +4386,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/pageShowCoupon</string>
+						<string>http://127.0.0.1:22060/promotion/pageShowCoupon</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4408,7 +4408,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/sendCouponCode2Stu</string>
+						<string>http://127.0.0.1:22060/promotion/sendCouponCode2Stu</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4430,7 +4430,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/acquireCouponCodeSelf</string>
+						<string>http://127.0.0.1:22060/promotion/acquireCouponCodeSelf</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4452,7 +4452,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/checkInputCouponCode</string>
+						<string>http://127.0.0.1:22060/promotion/checkInputCouponCode</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4474,7 +4474,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/couponInfo</string>
+						<string>http://127.0.0.1:22060/promotion/couponInfo</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4496,7 +4496,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/myCoupons4Teacher</string>
+						<string>http://127.0.0.1:22060/promotion/myCoupons4Teacher</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4518,7 +4518,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/coupons</string>
+						<string>http://127.0.0.1:22060/promotion/coupons</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4540,7 +4540,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/couponCodePageForShop</string>
+						<string>http://127.0.0.1:22060/promotion/couponCodePageForShop</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4562,7 +4562,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/couponCodePageForStu</string>
+						<string>http://127.0.0.1:22060/promotion/couponCodePageForStu</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4584,7 +4584,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/couponCodeListForStuOrder</string>
+						<string>http://127.0.0.1:22060/promotion/couponCodeListForStuOrder</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4606,7 +4606,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/activityInfoById</string>
+						<string>http://127.0.0.1:22060/promotion/activityInfoById</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4628,7 +4628,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/addActivityCourse</string>
+						<string>http://127.0.0.1:22060/promotion/addActivityCourse</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4650,7 +4650,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/operateActivityState</string>
+						<string>http://127.0.0.1:22060/promotion/operateActivityState</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4672,7 +4672,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/activities</string>
+						<string>http://127.0.0.1:22060/promotion/activities</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4694,7 +4694,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/myStudentsByCurriculumType</string>
+						<string>http://127.0.0.1:22060/sale/myStudentsByCurriculumType</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4716,7 +4716,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/activityWareList</string>
+						<string>http://127.0.0.1:22060/promotion/activityWareList</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4738,7 +4738,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/grabRedEnvelope</string>
+						<string>http://127.0.0.1:22060/promotion/grabRedEnvelope</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -4760,7 +4760,7 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/activitiesByCommodityId</string>
+						<string>http://127.0.0.1:22060/promotion/activitiesByCommodityId</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
