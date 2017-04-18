@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yijiajiao.root.bean.CommandBean;
 import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.HttpUtil;
+import com.yijiajiao.root.utils.RootUtil;
 import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.yijiajiao.root.utils.RootUtil.jsonResult;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -53,7 +52,7 @@ public class LogicMapping implements Runnable{
             Map<String,Object> head = new HashMap<>();
             head.put("tag",command.getTag());
             String res = HttpUtil.httpRest(SERVER, uri, head, command.getParams(), "POST");
-            jsonResult(response,res);
+            RootUtil.jsonResult(response,res);
         }
         asyncContext.complete();
     }

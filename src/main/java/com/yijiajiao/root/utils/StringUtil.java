@@ -4387,4 +4387,8 @@ public static int indexOfDifference(String str1, String str2) {
         }
     }
 
+    public static void main(String[] args) {
+        String yijiajiao = getMD5("yijiajiao", 1);
+        System.out.println(yijiajiao);
+    }
 }

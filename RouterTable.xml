@@ -5812,6 +5812,73 @@
 					</void>
 				</object>
 			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://211.157.179.221:22060/user/diagnoseSubmitForOnce</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>POST</string>
+					</void>
+					<void property="requestStatus">
+						<string>UNLOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/diagnoseSubmitForOnce</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://211.157.179.221:22060/yijiajiao-server/resource/getPaperInfoUnLogin</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>UNLOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/getPaperInfoUnLogin</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://211.157.179.221:22060/yijiajiao-server/promotion/wareListForCoupon</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/wareListForCoupon</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+
 		</void>
 	</object>
 </java>

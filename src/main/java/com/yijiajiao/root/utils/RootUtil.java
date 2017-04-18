@@ -9,9 +9,6 @@ import java.io.PrintWriter;
  * @CREATE 2016-12-20-13:26
  */
 public class RootUtil {
-
-
-
     
     private static final String JSON_CONTENT_TYPE = "application/json; charset=utf-8";
 
@@ -47,11 +44,13 @@ public class RootUtil {
      *  输出json格式结果
      */
     public static void jsonResult(ServletResponse response, Object object){
+        System.out.println("RootUtil---response.hashCode:"+response.hashCode());
         response.setContentType(JSON_CONTENT_TYPE);
         PrintWriter out = null;
         try {
             out = response.getWriter();
             out.write((String) object);
+            System.out.println("RootUtil 输出到页面！");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

@@ -17,7 +17,7 @@ import java.io.IOException;
  * @CREATE 2017-01-18-13:37
  */
 
-@WebServlet(name = "Router4Asy", urlPatterns = { "/*" }, asyncSupported = true)
+@WebServlet(name = "Router4Asy", urlPatterns = { "/" }, asyncSupported = true)
 public class Router4Asy extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(Router4Asy.class);

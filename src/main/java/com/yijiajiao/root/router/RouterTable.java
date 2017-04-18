@@ -1,14 +1,15 @@
 package com.yijiajiao.root.router;
 
 import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,15 +20,15 @@ import java.util.regex.Pattern;
  */
 public class RouterTable implements Serializable{
 
-    private static final long       serialVersionUID  = -1563920797266872070L;
+    private static final long serialVersionUID  = -1563920797266872070L;
 
-    private static List<RouterInfo> routerInfos       = new ArrayList<RouterInfo>();
+    private List<RouterInfo> routerInfos = new ArrayList<RouterInfo>();
 
-    private static RouterTable      instance          = null;
+    private static RouterTable instance = null;
 
-    private String                  oauthAddress      = "http://192.168.2.252:8501";
+    private String oauthAddress = "http://192.168.2.252:8501";
 
-    private final static String     ROUTER_TABLE_FILE = Config.getBaseString("rootable");
+    private final static String ROUTER_TABLE_FILE = Config.getBaseString("rootable");
 
     private static final Logger log  = LoggerFactory.getLogger(RouterTable.class);
 
@@ -72,7 +73,8 @@ public class RouterTable implements Serializable{
     }
 
     public static RouterInfo getByRequestURL(String requestURL, String mothed) {
-        for (RouterInfo router : routerInfos) {
+        if (StringUtil.isEmpty(requestURL)) return null;
+        for (RouterInfo router : instance.routerInfos) {
             Pattern p = Pattern.compile(router.getRequestURL());
             Matcher m = p.matcher(requestURL);
             log.debug("regex validate  : " + m.matches());
@@ -94,12 +96,7 @@ public class RouterTable implements Serializable{
     }
 
     public List<RouterInfo> getRouterInfos() {
-        Iterator<RouterInfo> iter = routerInfos.iterator();
-        while (iter.hasNext()) {
-            RouterInfo r = iter.next();
-
-        }
-        return routerInfos;
+        return this.routerInfos;
     }
 
     public void setRouterInfos(List<RouterInfo> routerInfos) {
@@ -112,5 +109,73 @@ public class RouterTable implements Serializable{
 
     public void setOauthAddress(String oauthAddress) {
         this.oauthAddress = oauthAddress;
+    }
+
+    public static boolean output() throws IOException {
+        //创建输出文件
+        File fo = new File(ROUTER_TABLE_FILE);
+        //创建文件输出流
+        FileOutputStream fos = new FileOutputStream(fo);
+        //创建XML文件对象输出类实例
+        XMLEncoder encoder = new XMLEncoder(fos);
+        //对象序列化输出到XML文件
+        encoder.writeObject(instance);
+        encoder.flush();
+        //关闭序列化工具
+        encoder.close();
+        //关闭输出流
+        fos.close();
+        return true;
+    }
+
+    public static boolean copy(){
+        FileInputStream fi = null;
+
+        FileOutputStream fo = null;
+
+        FileChannel in = null;
+
+        FileChannel out = null;
+
+        try {
+            File origin = new File(ROUTER_TABLE_FILE);
+            String parent = origin.getParent();
+            File copy = new File(parent+"/"+System.currentTimeMillis()+"_table.xml");
+            if (!copy.exists()) copy.createNewFile();
+            fi = new FileInputStream(origin);
+
+            fo = new FileOutputStream(copy);
+
+            in = fi.getChannel();//得到对应的文件通道
+
+            out = fo.getChannel();//得到对应的文件通道
+
+            in.transferTo(0, in.size(), out);//连接两个通道，并且从in通道读取，然后写入out通道
+            return true;
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return false;
+
+        } finally {
+
+            try {
+
+                fi.close();
+
+                in.close();
+
+                fo.close();
+
+                out.close();
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+
+        }
     }
 }

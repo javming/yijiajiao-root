@@ -32,7 +32,10 @@ public class CharacterEncodingFilter implements Filter {
         long _start = System.currentTimeMillis();
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        log.info("[request-path:"+request.getPathInfo());
+        log.info("[pathInfo:"+request.getPathInfo()+"]");
+        log.info("[requestURL:"+request.getRequestURL()+"]");
+        log.info("[requestRUI:"+request.getRequestURI()+"]");
+        log.info("[contextPath:"+request.getContextPath()+"]");
         request.setCharacterEncoding(encoding);
         response.setCharacterEncoding(encoding);
         response.setContentType("application/json; charset=utf-8");
