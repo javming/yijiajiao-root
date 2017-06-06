@@ -38,7 +38,7 @@ public class CharacterEncodingFilter implements Filter {
         log.info("[contextPath:"+request.getContextPath()+"]");
         request.setCharacterEncoding(encoding);
         response.setCharacterEncoding(encoding);
-        response.setContentType("application/json; charset=utf-8");
+        //response.setContentType("application/json; charset=utf-8");
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
         response.addHeader("Access-Control-Allow-Headers", "Content-Type");

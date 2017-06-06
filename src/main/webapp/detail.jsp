@@ -23,7 +23,39 @@
             }
         };
         $(document).ready(function () {
-
+            var requestURL = $("[name='requestURL']");
+            var requestMothed = $("[name='requestMothed']");
+            var mappingURL = $("[name='mappingURL']");
+            var routerStatus = $("[name='routerStatus']");
+            var requestStatus = $("[name='requestStatus']");
+            $("#form1").submit(function (e) {
+                if (requestURL.val().trim()==''){
+                    e.preventDefault();
+                    alert("requestURL不能为空");
+                    return;
+                }else if (requestMothed.val().trim()==''){
+                    e.preventDefault();
+                    alert("requestMothed不能为空");
+                    return;
+                }else if (mappingURL.val().trim()==''){
+                    e.preventDefault();
+                    alert("mappingURL不能为空");
+                    return;
+                } else if (routerStatus.val().trim()==''){
+                    e.preventDefault();
+                    alert("routerStatus不能为空");
+                    return;
+                } else if (requestStatus.val().trim()==''){
+                    e.preventDefault();
+                    alert("requestStatus不能为空");
+                    return;
+                }
+                requestURL.attribute("value",requestURL.val().trim());
+                requestMothed.attribute("value",requestMothed.val().trim());
+                mappingURL.attribute("value",mappingURL.val().trim());
+                routerStatus.attribute("value",routerStatus.val().trim());
+                requestStatus.attribute("value",requestStatus.val().trim());
+            })
         })
     </script>
 <BODY>

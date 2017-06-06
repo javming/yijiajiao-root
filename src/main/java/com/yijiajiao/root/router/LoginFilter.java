@@ -6,6 +6,8 @@ import com.yijiajiao.root.bean.ResultBean;
 import com.yijiajiao.root.bean.SystemStatus;
 import com.yijiajiao.root.utils.RootUtil;
 import com.yijiajiao.root.utils.TokenUtil;
+import com.yijiajiao.root.utils.XMemcachedUtil;
+import net.rubyeye.xmemcached.MemcachedClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +32,17 @@ public class LoginFilter implements Filter{
 			if(!TokenUtil.verifyToken(command.getToken(), command.getOpenId())){
 				ResultBean result = new ResultBean();
 				result.setFailMsg(SystemStatus.TOKEN_TIME_OUT);
-				RootUtil.jsonResult(response,result);
+				RootUtil.jsonResult(response,JSON.toJSONString(result));
+				MemcachedClient memcachedClient = XMemcachedUtil.getMemcachedClient();
+				log.info("memcacchedClien="+memcachedClient);
+				try {
+					log.info("set memcached  is :    " + command.getTag() + " = " + JSON.toJSONString(result));
+					boolean flag = memcachedClient.set(command.getTag(), 7200, JSON.toJSONString(result));
+					if (flag) log.info("set memcached success!");
+				} catch (Exception e) {
+					log.error("set MemcachedClient failed!!");
+					e.printStackTrace();
+				}
 				return;
 			}
 			chain.doFilter(requestWrapper,response);
