@@ -46,10 +46,10 @@ public class HandleThread extends Thread {
                     res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(), null,"GET");
                     break;
                 case "POST":
-                    res = HttpUtil.httpRest(url,"",getHeaders(),getContent(),"POST");
+                    res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(),getContent(),"POST");
                     break;
                 case "PUT":
-                    res = HttpUtil.httpRest(url,"",getHeaders(),getContent(),"PUT");
+                    res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(),getContent(),"PUT");
                     break;
                 case "DELETE":
                     res = HttpUtil.httpRest(url+"?",request.getQueryString(),getHeaders(),null,"DELETE");
