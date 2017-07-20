@@ -1,5 +1,5 @@
-<%@ page import="com.yijiajiao.root.router.RouterInfo" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.yijiajiao.root.manage.model.RouterModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><TITLE>模板</TITLE>
   <%
@@ -69,7 +69,7 @@
                                   if ("".equals(condition)){
                                       %>
                                 <OPTION selected>搜索条件</OPTION>
-                                <OPTION value=requestMothed>requestMothed</OPTION>
+                                <OPTION value=requestMethod>requestMethod</OPTION>
                                 <%
                                   } else {
                                 %>
@@ -95,34 +95,42 @@
                       <TABLE id=grid style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" cellSpacing=1 cellPadding=2 rules=all border=0>
                         <TBODY>
                         <TR style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
+                          <td>序号</td>
                           <TD>requestURL</TD>
-                          <TD>requestMothed</TD>
+                          <TD>requestMethod</TD>
                           <TD>requestStatus</TD>
                           <TD>mappingURL</TD>
                           <TD>routerStatus</TD>
                           <TD>replaceRegex</TD>
+                          <TD>decription</TD>
                           <TD>操作</TD></TR>
                         <%
-                          List<RouterInfo> list = (List<RouterInfo>) request.getAttribute("routerInfos");
-                          for (RouterInfo ro : list){
+                          List<RouterModel> list = (List<RouterModel>) request.getAttribute("routers");
+                          int num = 1;
+                          for (RouterModel ro : list){
                         %>
                         <TR style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-                          <TD><%=ro.getRequestURL()%></TD>
-                          <TD><%=ro.getRequestMothed()%></TD>
+                          <td><%=num%></td>
+                          <TD><%=ro.getRequestUrl()%></TD>
+                          <TD><%=ro.getRequestMethod()%></TD>
                           <TD><%=ro.getRequestStatus()%></TD>
-                          <TD><%=ro.getMappingURL()%></TD>
+                          <TD><%=ro.getMappingUrl()%></TD>
                           <TD><%=ro.getRouterStatus()%></TD>
                           <TD><%=ro.getReplaceRegex()%></TD>
+                          <td><%=ro.getDescription()%></td>
                           <TD>
-                            <A href="/detail.jsp?requestURL=<%=ro.getRequestURL()%>&requestMothed=<%=ro.getRequestMothed()%>
-                                                      &mappingURL=<%=ro.getMappingURL()%>&routerStatus=<%=ro.getRouterStatus()%>
-                                                      &requestStatus=<%=ro.getRequestStatus()%>&replaceRegex=<%=ro.getReplaceRegex()%>">
+                            <A href="/detail.jsp?requestURL=<%=ro.getRequestUrl()%>&requestMethod=<%=ro.getRequestMethod()%>
+                                                      &mappingURL=<%=ro.getMappingUrl()%>&routerStatus=<%=ro.getRouterStatus()%>
+                                                      &requestStatus=<%=ro.getRequestStatus()%>&replaceRegex=<%=ro.getReplaceRegex()%>
+                                                      &requestId=<%=ro.getRequestId()%>&description=<%=ro.getDescription()%>">
                               编辑</A>
-                            <A href="/saveOrUpdate.action?requestURL=<%=ro.getRequestURL()%>&type=0">删除</A>
+                            <A href="/saveOrUpdate.action?requestId=<%=ro.getRequestId()%>&type=0">删除</A>
                           </TD>
                         </TR>
                         <%
+                            num++;
                           }
+
                         %>
                         </TBODY>
                       </TABLE>

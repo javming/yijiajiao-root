@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet{
         String basePassword = Config.getBaseString("password");
         if (!username.equals(baseUsername) || !password.equals(basePassword)){
             req.setAttribute("msg","用户名或密码错误！");
-            req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            req.getRequestDispatcher("/error.jsp").forward(req,resp);
             return;
         }
         String token = UUID.randomUUID().toString().trim().replaceAll("-", "");

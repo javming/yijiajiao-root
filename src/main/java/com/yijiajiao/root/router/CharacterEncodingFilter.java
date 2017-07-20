@@ -34,7 +34,7 @@ public class CharacterEncodingFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         log.info("[pathInfo:"+request.getPathInfo()+"]");
         log.info("[requestURL:"+request.getRequestURL()+"]");
-        log.info("[requestRUI:"+request.getRequestURI()+"]");
+        log.info("[requestURI:"+request.getRequestURI()+"]");
         log.info("[contextPath:"+request.getContextPath()+"]");
         request.setCharacterEncoding(encoding);
         response.setCharacterEncoding(encoding);

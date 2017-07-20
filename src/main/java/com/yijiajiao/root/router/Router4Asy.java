@@ -1,6 +1,5 @@
 package com.yijiajiao.root.router;
 
-import com.yijiajiao.root.utils.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +22,7 @@ public class Router4Asy extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(Router4Asy.class);
 
     public void init() throws ServletException {
-        try {
+/*        try {
             RouterTable.getInstance();
             log.info("init 实例化可配置路由文件");
         } catch (IOException e) {
@@ -42,7 +41,8 @@ public class Router4Asy extends HttpServlet {
                     RouterTable.reload();
                 }
             }
-        }).start();
+        }).start();*/
+        RouterTable.routerInit();
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

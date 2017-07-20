@@ -4524,7 +4524,7 @@
 						<string>GET</string>
 					</void>
 					<void property="requestStatus">
-						<string>LOGIN</string>
+						<string>UNLOGIN</string>
 					</void>
 					<void property="requestURL">
 						<string>/coupons</string>
@@ -4933,7 +4933,7 @@
 					</void>
 				</object>
 			</void>
-<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+			<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
@@ -5154,27 +5154,27 @@
 					</void>
 				</object>
 			</void>			<void method="add">
-				<object class="com.yijiajiao.root.router.RouterInfo">
-					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/addActivity</string>
-					</void>
-					<void property="requestMothed">
-						<string>POST</string>
-					</void>
-					<void property="requestStatus">
-						<string>LOGIN</string>
-					</void>
-					<void property="requestURL">
-						<string>/addActivity</string>
-					</void>
-					<void property="routerStatus">
-						<string>INSTALLED_TOUTER</string>
-					</void>
-					<void property="replaceRegex">
-						<string></string>
-					</void>
-				</object>
-			</void>
+			<object class="com.yijiajiao.root.router.RouterInfo">
+				<void property="mappingURL">
+					<string>http://127.0.0.1:22060/yijiajiao-server/promotion/addActivity</string>
+				</void>
+				<void property="requestMothed">
+					<string>POST</string>
+				</void>
+				<void property="requestStatus">
+					<string>LOGIN</string>
+				</void>
+				<void property="requestURL">
+					<string>/addActivity</string>
+				</void>
+				<void property="routerStatus">
+					<string>INSTALLED_TOUTER</string>
+				</void>
+				<void property="replaceRegex">
+					<string></string>
+				</void>
+			</object>
+		</void>
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
@@ -5241,27 +5241,27 @@
 					</void>
 				</object>
 			</void>			<void method="add">
-				<object class="com.yijiajiao.root.router.RouterInfo">
-					<void property="mappingURL">
-						<string>http://127.0.0.1:22060/yijiajiao-server/sale/updateAppraiseReback</string>
-					</void>
-					<void property="requestMothed">
-						<string>POST</string>
-					</void>
-					<void property="requestStatus">
-						<string>LOGIN</string>
-					</void>
-					<void property="requestURL">
-						<string>/updateAppraiseReback</string>
-					</void>
-					<void property="routerStatus">
-						<string>INSTALLED_TOUTER</string>
-					</void>
-					<void property="replaceRegex">
-						<string></string>
-					</void>
-				</object>
-			</void>
+			<object class="com.yijiajiao.root.router.RouterInfo">
+				<void property="mappingURL">
+					<string>http://127.0.0.1:22060/yijiajiao-server/sale/updateAppraiseReback</string>
+				</void>
+				<void property="requestMothed">
+					<string>POST</string>
+				</void>
+				<void property="requestStatus">
+					<string>LOGIN</string>
+				</void>
+				<void property="requestURL">
+					<string>/updateAppraiseReback</string>
+				</void>
+				<void property="routerStatus">
+					<string>INSTALLED_TOUTER</string>
+				</void>
+				<void property="replaceRegex">
+					<string></string>
+				</void>
+			</object>
+		</void>
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
@@ -5815,10 +5815,29 @@
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://211.157.179.221:22060/user/diagnoseSubmitForOnce</string>
+						<string>http://127.0.0.1:22020/yijiajiao-oss/getByName/red_packets</string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>UNLOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/packetStatus</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
 					</void>
 					<void property="replaceRegex">
 						<string></string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/user/diagnoseSubmitForOnce</string>
 					</void>
 					<void property="requestMothed">
 						<string>POST</string>
@@ -5832,15 +5851,15 @@
 					<void property="routerStatus">
 						<string>INSTALLED_TOUTER</string>
 					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
 				</object>
 			</void>
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://211.157.179.221:22060/yijiajiao-server/resource/getPaperInfoUnLogin</string>
-					</void>
-					<void property="replaceRegex">
-						<string></string>
+						<string>http://127.0.0.1:22060/yijiajiao-server/resource/getPaperInfoUnLogin</string>
 					</void>
 					<void property="requestMothed">
 						<string>GET</string>
@@ -5854,12 +5873,15 @@
 					<void property="routerStatus">
 						<string>INSTALLED_TOUTER</string>
 					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
 				</object>
 			</void>
 			<void method="add">
 				<object class="com.yijiajiao.root.router.RouterInfo">
 					<void property="mappingURL">
-						<string>http://211.157.179.221:22060/yijiajiao-server/promotion/wareListForCoupon</string>
+						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/wareListForCoupon</string>
 					</void>
 					<void property="replaceRegex">
 						<string></string>
@@ -5878,7 +5900,358 @@
 					</void>
 				</object>
 			</void>
-
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/get/verify/image.json</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>UNLOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/verify/image.json</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/promotion/grantCoupon</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/grantCoupon</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/commit</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>POST</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/commit</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/reject</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>PUT</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/reject</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/receive</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>PUT</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/receive</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/answer/upload</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>POST</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/answer/upload</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/solutionInfoById</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/solutionInfoById</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/teacher/solutionList</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/solution/teacher/solutionList</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/paySolution</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>PUT</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/paySolution</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/durationRecharge</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>POST</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/durationRecharge</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/durationBalance</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/durationBalance</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/studentSolutionList</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/studentSolutionList</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/user/teachersOnline</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/teachersOnline</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/user/onOrOffline</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/onOrOffline</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/solution/studentCancelSolution</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/studentCancelSolution</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/user/freeStudy/myDiaglist</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/myDiaglist4FreeStudy</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
 		</void>
 	</object>
 </java>

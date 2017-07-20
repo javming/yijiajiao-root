@@ -25,7 +25,6 @@ public class HandleThread extends Thread {
     private HttpServletRequest  request;
     private HttpServletResponse response;
     private AsyncContext        asyncContext;
-    private RouterInfo          routerInfo = null;
 
     public HandleThread(AsyncContext aCtx, HttpServletRequest request, HttpServletResponse response) {
         this.asyncContext = aCtx;
@@ -36,7 +35,7 @@ public class HandleThread extends Thread {
 
     @Override
     public void run(){
-        routerInfo = RouterTable.getByRequestURL(request.getPathInfo(), request.getMethod());
+        RouterInfo routerInfo = RouterTable.getByRequestURL(request.getPathInfo(), request.getMethod());
         if (null!= routerInfo){
             String url = routerInfo.getMappingURL();
             log.info("__请求其他系统url:"+url);

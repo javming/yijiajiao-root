@@ -1,7 +1,9 @@
 package com.yijiajiao.root.manage;
 
-import com.yijiajiao.root.router.RouterInfo;
-import com.yijiajiao.root.router.RouterTable;
+import com.yijiajiao.root.manage.model.RouterModel;
+import com.yijiajiao.root.utils.Config;
+import com.yijiajiao.root.utils.RedisUtil;
+import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,37 +27,34 @@ public class ShowRoutersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RouterTable instance = RouterTable.getInstance();
-        List<RouterInfo> routerInfos = instance.getRouterInfos();
+
+        String token = (String)req.getSession().getAttribute(Config.getBaseString("username"));
+        if (StringUtil.isEmpty(token) || !token.equals(RedisUtil.getValue(Config.getBaseString("username")))){
+            req.setAttribute("msg","权限不足，操作取消！");
+            req.getRequestDispatcher("/error.jsp").forward(req,resp);
+            return;
+        }
+
         String condition = req.getParameter("condition");
         String keyWord = req.getParameter("keyWord");
-        log.info("搜索条件：{ condition:" + condition + ";keyWord=" + keyWord + " }");
+        RouterModel param = new RouterModel();
         if (condition!=null){
-            List<RouterInfo> rout = new ArrayList<>();
-            for (RouterInfo r : routerInfos){
-                if ("requestURL".equals(condition)){
-                    if (r.getRequestURL().contains(keyWord)){
-                        rout.add(r);
-                    }
-                } else if ("requestMothed".equals(condition)){
-                    if (r.getRequestMothed().equals(keyWord)){
-                        rout.add(r);
-                    }
-                } else if ("mappingURL".equals(condition)){
-                    if (r.getMappingURL().contains(keyWord)){
-                        rout.add(r);
-                    }
-                } else if ("requestStatus".equals(condition)){
-                    if (r.getRequestStatus().contains(keyWord)){
-                        rout.add(r);
-                    }
-                }
+            log.info("搜索条件：{ condition:" + condition + ";keyWord=" + keyWord + " }");
+            if ("requestURL".equals(condition)){
+                param.setRequestUrl(keyWord);
+            } else if ("requestMethod".equals(condition)){
+                param.setRequestMethod(keyWord);
+            } else if ("mappingURL".equals(condition)){
+                param.setMappingUrl(keyWord);
+            } else if ("requestStatus".equals(condition)){
+                param.setRequestStatus(keyWord);
             }
             req.setAttribute("condition",condition);
             req.setAttribute("keyWord",keyWord);
-            routerInfos = rout;
         }
-        req.setAttribute("routerInfos",routerInfos);
+        List<RouterModel> list = RouterService.routersByConditions(param);
+
+        req.setAttribute("routers",list);
         req.getRequestDispatcher("/index.jsp").forward(req,resp);
     }
 }

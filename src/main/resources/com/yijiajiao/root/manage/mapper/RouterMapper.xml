@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 错落有致的，真漂亮，后来维护者请保持 -->
+<mapper namespace="com.yijiajiao.root.manage.mapper.RouterMapper">
+
+    <select id="routers" resultType="router">
+        SELECT
+            router.request_id requestId,
+            router.request_url requestUrl,
+            router.request_method requestMethod,
+            router.request_status requestStatus,
+            router.mapping_url mappingUrl,
+            router.router_status routerStatus,
+            router.replace_regex replaceRegex,
+            router.description description
+        FROM request_router router
+        WHERE router.delete=0
+    </select>
+
+    <select id="routerDetail" resultType="router" parameterType="int">
+        SELECT
+            request_id requestId,
+            request_url requestUrl,
+            request_method requestMethod,
+            request_status requestStatus,
+            mapping_url mappingUrl,
+            router_status routerStatus,
+            replace_regex replaceRegex,
+            description description
+        FROM request_router
+        WHERE request_id=#{requestId}
+    </select>
+
+    <select id="routersByConditions" resultType="router" parameterType="router">
+
+        SELECT
+            router.request_id requestId,
+            router.request_url requestUrl,
+            router.request_method requestMethod,
+            router.request_status requestStatus,
+            router.mapping_url mappingUrl,
+            router.router_status routerStatus,
+            router.replace_regex replaceRegex,
+            router.description description
+        FROM request_router router
+        WHERE router.delete=0
+        <if test="requestUrl!=null">
+            AND router.request_url=#{requestUrl}
+        </if>
+        <if test="requestMethod!=null">
+            AND router.request_method=#{requestMethod}
+        </if>
+        <if test="requestStatus!=null">
+            AND router.request_status=#{requestStatus}
+        </if>
+        <if test="mappingUrl!=null">
+            AND router.mapping_url=#{mappingUrl}
+        </if>
+    </select>
+
+    <insert id="addRouter" parameterType="router">
+        INSERT INTO request_router(
+            request_url,
+            request_method,
+            request_status,
+            mapping_url,
+            router_status,
+            replace_regex,
+            description
+        ) VALUES (
+            #{requestUrl},
+            #{requestMethod},
+            #{requestStatus},
+            #{mappingUrl},
+            #{routerStatus},
+            #{replaceRegex},
+            #{description}
+        )
+    </insert>
+
+    <update id="updateRouter" parameterType="router">
+        UPDATE request_router SET
+          request_url=#{requestUrl},
+          request_method=#{requestMethod},
+          request_status=#{requestStatus},
+          mapping_url=#{mappingUrl},
+          router_status=#{routerStatus},
+          replace_regex=#{replaceRegex},
+          description=#{description}
+        WHERE request_id=#{requestId}
+    </update>
+
+    <insert id="addRouters" parameterType="java.util.List">
+        INSERT INTO request_router(
+            request_url,
+            request_method,
+            request_status,
+            mapping_url,
+            router_status,
+            replace_regex,
+            description
+        ) VALUES
+        <foreach collection="list" item="router" index="index" separator=",">
+            (
+            #{router.requestUrl},
+            #{router.requestMethod},
+            #{router.requestStatus},
+            #{router.mappingUrl},
+            #{router.routerStatus},
+            #{router.replaceRegex},
+            #{router.description}
+            )
+        </foreach>
+
+    </insert>
+
+    <update id="delete" >
+        UPDATE request_router router
+        SET
+          router.delete=1
+        WHERE
+          router.request_id=#{requestId}
+    </update>
+
+</mapper>

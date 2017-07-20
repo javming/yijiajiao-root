@@ -1,5 +1,7 @@
 package com.yijiajiao.root.router;
 
+import com.yijiajiao.root.manage.RouterService;
+import com.yijiajiao.root.manage.model.RouterModel;
 import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
@@ -50,6 +52,33 @@ public class RouterTable implements Serializable{
             }
         }
         return instance;
+    }
+
+
+    //初始化路由表
+    public static void routerInit(){
+        if ( instance == null ) {
+            instance = new RouterTable();
+        }
+
+        if (!instance.routerInfos.isEmpty()){
+            instance.routerInfos.clear();
+        }
+
+        List<RouterModel> routers = RouterService.routers();
+        if (routers == null || routers.size() == 0){
+            log.error("路由表为空，请检查！！！！！！");
+            throw new RuntimeException("路由表为空，请检查！！！！！！");
+        }
+        for ( RouterModel router : routers){
+            RouterInfo routerInfo = new RouterInfo(router.getRequestUrl(),
+                                                   router.getRequestMethod(),
+                                                   router.getRouterStatus(),
+                                                   router.getMappingUrl(),
+                                                   router.getRequestStatus(),
+                                                   router.getReplaceRegex());
+            instance.routerInfos.add(routerInfo);
+        }
     }
 
     private void save() throws IOException {
@@ -178,4 +207,5 @@ public class RouterTable implements Serializable{
 
         }
     }
+
 }

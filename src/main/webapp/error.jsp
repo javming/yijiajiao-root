@@ -38,7 +38,7 @@
         <h1>
         <P style="padding: 80px 10px 10px; position: relative;"><font color="red"><%=msg%></font></P>
         </h1>
-        <a href="/routers.action">返回</a>
+        <a href="/login.html">返回</a>
     </DIV>
 </form>
 </BODY>

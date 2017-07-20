@@ -29,6 +29,13 @@
 	  <root level="DEBUG">   
 		<appender-ref ref="FILE" />   
 	  </root> -->
+	<logger name="org.apache.ibatis" level="INFO">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+
+	<logger name="java.sql" level="debug">
+		<appender-ref ref="STDOUT"/>
+	</logger>
 	<root level="INFO">
 	  <appender-ref ref="STDOUT" />
 	</root>
