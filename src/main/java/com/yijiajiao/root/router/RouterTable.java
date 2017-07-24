@@ -2,7 +2,6 @@ package com.yijiajiao.root.router;
 
 import com.yijiajiao.root.manage.RouterService;
 import com.yijiajiao.root.manage.model.RouterModel;
-import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +29,7 @@ public class RouterTable implements Serializable{
 
     private String oauthAddress = "http://192.168.2.252:8501";
 
-    private final static String ROUTER_TABLE_FILE = Config.getBaseString("rootable");
+    private final static String ROUTER_TABLE_FILE = "RouterTable.xml";
 
     private static final Logger log  = LoggerFactory.getLogger(RouterTable.class);
 
@@ -70,6 +69,7 @@ public class RouterTable implements Serializable{
             log.error("路由表为空，请检查！！！！！！");
             throw new RuntimeException("路由表为空，请检查！！！！！！");
         }
+        int n = 1;
         for ( RouterModel router : routers){
             RouterInfo routerInfo = new RouterInfo(router.getRequestUrl(),
                                                    router.getRequestMethod(),
@@ -78,7 +78,10 @@ public class RouterTable implements Serializable{
                                                    router.getRequestStatus(),
                                                    router.getReplaceRegex());
             instance.routerInfos.add(routerInfo);
+            log.info("routerInfo"+ n + ":" + routerInfo);
+            n++;
         }
+        log.info("路由总数量：" + instance.routerInfos.size());
     }
 
     private void save() throws IOException {
@@ -208,4 +211,15 @@ public class RouterTable implements Serializable{
         }
     }
 
+    public static void main(String[] args) throws IOException {
+
+        RouterTable instance = getInstance();
+        List<RouterModel> routers = new ArrayList<>();
+        for (RouterInfo ri : instance.routerInfos){
+            RouterModel routerModel = new RouterModel(null,ri.getRequestURL(),ri.getRequestMothed(),
+                    ri.getRequestStatus(),ri.getMappingURL(),ri.getRouterStatus(),ri.getReplaceRegex(),"接口");
+            routers.add(routerModel);
+        }
+        RouterService.addRouters(routers);
+    }
 }

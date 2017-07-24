@@ -35,7 +35,7 @@ public class HandleThread extends Thread {
 
     @Override
     public void run(){
-        RouterInfo routerInfo = RouterTable.getByRequestURL(request.getPathInfo(), request.getMethod());
+        RouterInfo routerInfo = RouterTable.getByRequestURL(request.getRequestURI(), request.getMethod());
         if (null!= routerInfo){
             String url = routerInfo.getMappingURL();
             log.info("__请求其他系统url:"+url);

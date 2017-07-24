@@ -24,8 +24,8 @@ public class LoginFilter implements Filter{
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		RouterInfo routerInfo = RouterTable.getByRequestURL(req.getPathInfo(), req.getMethod());
-		if ("/command".equals(req.getPathInfo()) || "/command/".equals(req.getPathInfo())) {
+		RouterInfo routerInfo = RouterTable.getByRequestURL(req.getRequestURI(), req.getMethod());
+		if ("/command".equals(req.getRequestURI()) || "/command/".equals(req.getRequestURI())) {
 			ServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(req);
 			String body = HttpHelper.getBodyString(requestWrapper);
 			CommandBean command = JSON.parseObject(body, CommandBean.class);

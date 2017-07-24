@@ -119,10 +119,7 @@
                           <TD><%=ro.getReplaceRegex()%></TD>
                           <td><%=ro.getDescription()%></td>
                           <TD>
-                            <A href="/detail.jsp?requestURL=<%=ro.getRequestUrl()%>&requestMethod=<%=ro.getRequestMethod()%>
-                                                      &mappingURL=<%=ro.getMappingUrl()%>&routerStatus=<%=ro.getRouterStatus()%>
-                                                      &requestStatus=<%=ro.getRequestStatus()%>&replaceRegex=<%=ro.getReplaceRegex()%>
-                                                      &requestId=<%=ro.getRequestId()%>&description=<%=ro.getDescription()%>">
+                            <A href="/detail.jsp?requestURL=<%=ro.getRequestUrl()%>&requestMethod=<%=ro.getRequestMethod()%>&mappingURL=<%=ro.getMappingUrl()%>&routerStatus=<%=ro.getRouterStatus()%>&requestStatus=<%=ro.getRequestStatus()%>&replaceRegex=<%=ro.getReplaceRegex()%>&requestId=<%=ro.getRequestId()%>&description=<%=ro.getDescription()%>">
                               编辑</A>
                             <A href="/saveOrUpdate.action?requestId=<%=ro.getRequestId()%>&type=0">删除</A>
                           </TD>

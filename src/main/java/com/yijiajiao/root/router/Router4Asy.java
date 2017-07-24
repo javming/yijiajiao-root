@@ -46,14 +46,15 @@ public class Router4Asy extends HttpServlet {
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info("请求信息：\n __[request_path:" + request.getPathInfo() +"]\n __[query_param:"+request.getQueryString()
+        log.info("请求信息：\n __[request_path:" + request.getRequestURI() +"]\n __[query_param:"+request.getQueryString()
                 +"]\n __[request_method:"+request.getMethod()+"]");
 
         AsyncContext aCtx = request.startAsync(request, response);
 
-        if ("/command".equals(request.getPathInfo())||"/command/".equals(request.getPathInfo())){
+        if ("/command".equals(request.getRequestURI())||"/command/".equals(request.getRequestURI())){
             aCtx.start(new LogicMapping(aCtx, request, response));
         }else {
+            log.info("异步请求》》》》》》》》》》》》》》》》》》》》》");
             aCtx.start(new HandleThread(aCtx, request, response));
         }
 

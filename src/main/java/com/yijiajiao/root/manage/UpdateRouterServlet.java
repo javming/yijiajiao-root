@@ -2,6 +2,7 @@ package com.yijiajiao.root.manage;
 
 import com.yijiajiao.root.manage.model.RouterModel;
 import com.yijiajiao.root.router.RouterTable;
+import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.RedisUtil;
 import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
@@ -23,8 +24,8 @@ public class UpdateRouterServlet extends HttpServlet{
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = (String)req.getSession().getAttribute("yijiajiao");
-        if (StringUtil.isEmpty(token) || !token.equals(RedisUtil.getValue("yijiajiao"))){
+        String token = (String)req.getSession().getAttribute(Config.getBaseString("username"));
+        if (StringUtil.isEmpty(token) || !token.equals(RedisUtil.getValue(Config.getBaseString("username")))){
             req.setAttribute("msg","权限不足，操作取消！");
             req.getRequestDispatcher("/error.jsp").forward(req,resp);
             return;

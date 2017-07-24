@@ -87,4 +87,16 @@ public class RouterInfo{
     public void setReplaceRegex(String replaceRegex) {
         this.replaceRegex = replaceRegex;
     }
+
+    @Override
+    public String toString() {
+        return "RouterInfo{" +
+                "requestURL='" + requestURL + '\'' +
+                ", requestMothed='" + requestMothed + '\'' +
+                ", routerStatus='" + routerStatus + '\'' +
+                ", mappingURL='" + mappingURL + '\'' +
+                ", requestStatus='" + requestStatus + '\'' +
+                ", replaceRegex='" + replaceRegex + '\'' +
+                '}';
+    }
 }

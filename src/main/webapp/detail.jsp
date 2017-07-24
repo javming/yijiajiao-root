@@ -3,14 +3,14 @@
     <META http-equiv=Content-Type content="text/html; charset=utf-8">
     <script src ="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%
-        String requestURL = ((requestURL=request.getParameter("requestURL"))==null)?"":requestURL;
-        String requestMethod = ((requestMethod=request.getParameter("requestMethod"))==null)?"":requestMethod;
-        String mappingURL = ((mappingURL=request.getParameter("mappingURL"))==null)?"":mappingURL;
-        String requestStatus = ((requestStatus=request.getParameter("requestStatus"))==null)?"":requestStatus;
-        String routerStatus = ((routerStatus=request.getParameter("routerStatus"))==null)?"":routerStatus;
-        String replaceRegex = ((replaceRegex=request.getParameter("replaceRegex"))==null)?"":replaceRegex;
-        String description = ((description=request.getParameter("description"))==null)?"":description;
-        String requestId = ((requestId=request.getParameter("requestId"))==null)?"":requestId;
+        String requestURL = ((requestURL=request.getParameter("requestURL"))==null)?"":requestURL.trim();
+        String requestMethod = ((requestMethod=request.getParameter("requestMethod"))==null)?"":requestMethod.trim();
+        String mappingURL = ((mappingURL=request.getParameter("mappingURL"))==null)?"":mappingURL.trim();
+        String requestStatus = ((requestStatus=request.getParameter("requestStatus"))==null)?"":requestStatus.trim();
+        String routerStatus = ((routerStatus=request.getParameter("routerStatus"))==null)?"":routerStatus.trim();
+        String replaceRegex = ((replaceRegex=request.getParameter("replaceRegex"))==null)?"":replaceRegex.trim();
+        String description = ((description=request.getParameter("description"))==null)?"":description.trim();
+        String requestId = ((requestId=request.getParameter("requestId"))==null)?"":requestId.trim();
     %>
     <script language="JavaScript">
         window.onload = function() {
