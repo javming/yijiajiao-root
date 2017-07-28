@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/ckform.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<form class="form-inline definewidth m20" action="index.html" method="get">  
+    查询类型：
+    <SELECT id=sClient name=condition>
+        <OPTION value=requestMethod>requestMethod</OPTION>
+        <OPTION value=requestUrl>requestUrl</OPTION>
+        <OPTION value=mappingUrl>mappingUrl</OPTION>
+        <OPTION value=requestStatus>requestStatus</OPTION>
+    </SELECT>&nbsp;&nbsp;
+    查询条件：
+    <input type="text" name="keyWord" id="keyWord" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <button id="search" type="button" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-success" id="addnew">新增路由</button>
+</form>
+<table class="table table-bordered table-hover definewidth m10" id="routers">
+
+</table>
+</body>
+</html>
+<script>
+    $(function () {
+
+        queryRouters();
+
+        $('#search').click(function () {
+            var condition = $("#sClient").val();
+            var keyWord = $("#keyWord").val();
+            queryRouters(condition,keyWord);
+        });
+
+        $('#addnew').click(function(){
+            window.location.href="/html/router/add.html";
+        });
+
+    });
+    function del(id)
+    {
+        if(confirm("确定要删除吗？")) {
+            $.ajax({
+                url:'/saveOrUpdate.action?type=0&requestId='+id,
+                type:'delete',
+                success:function (data) {
+                    alert(data);
+                }
+            });
+
+        }
+    }
+    function queryRouters(condition,keyWord) {
+        var query = '';
+        if (condition != ""){
+            query = query + "condition=" + condition;
+        }
+        if (keyWord != ""){
+            query = query + "&keyWord=" + keyWord;
+        }
+
+        $.ajax({
+            type:'get',
+            url: '/routers.action?' + query,
+            dataType:'json',
+            success:function (result) {
+                var str = '<thead><tr><th>序号</th><th>requestURL</th><th>requestMethod</th><th>requestStatus</th>'+
+                    '<th>mappingURL</th><th>routerStatus</th><th>replaceRegex</th><th>decription</th>' +
+                    '<th>代理人</th><th>操作</th></tr></thead>';
+                var data = result;
+                for (var i=0; i<data.length; i++){
+                    var id = data[i].requestId;
+                    var requestURL = data[i].requestUrl;
+                    var requestMethod = data[i].requestMethod;
+                    var requestStatus = data[i].requestStatus;
+                    var mappingURL = data[i].mappingUrl;
+                    var routerStatus = data[i].routerStatus;
+                    var replaceRegex = data[i].replaceRegex;
+                    var description = data[i].description;
+                    var serverAgent = data[i].serverAgent;
+                    str = str + '<tr>' +
+                        '<td>' + id + '</td>' +
+                        '<td>' + requestURL + '</td>' +
+                        '<td>' + requestMethod + '</td>' +
+                        '<td>' + requestStatus + '</td>' +
+                        '<td>' + mappingURL + '</td>' +
+                        '<td>' + routerStatus + '</td>' +
+                        '<td>' + replaceRegex + '</td>' +
+                        '<td>' + description + '</td>' +
+                        '<td>' + serverAgent + '</td>' +
+                        '<td><a class="btn btn-primary" href="" onclick="del('+id+')">删除</a></td>' +
+                        '</tr>';
+                }
+                $("#routers").html(str);
+            },
+            error:function (data) {
+                alert(data);
+                window.location.href="/login.html";
+            }
+        });
+    }
+
+</script>

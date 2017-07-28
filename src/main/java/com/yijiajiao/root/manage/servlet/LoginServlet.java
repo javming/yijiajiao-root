@@ -1,4 +1,4 @@
-package com.yijiajiao.root.manage;
+package com.yijiajiao.root.manage.servlet;
 
 import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.RedisUtil;
@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet{
         String token = UUID.randomUUID().toString().trim().replaceAll("-", "");
         RedisUtil.putRedis(username,token,7200);
         req.getSession().setAttribute(username,token);
-        resp.sendRedirect("/routers.action");
+        req.getSession().setAttribute("username",username);
+        resp.sendRedirect("/html/index.html");
     }
 }

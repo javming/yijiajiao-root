@@ -1,16 +1,14 @@
-package com.yijiajiao.root.manage;
+package com.yijiajiao.root.manage.service;
 
 import com.yijiajiao.root.manage.mapper.RouterMapper;
 import com.yijiajiao.root.manage.model.RouterModel;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -19,37 +17,22 @@ import java.util.List;
 public class RouterService {
 
     private static Logger log = LoggerFactory.getLogger(RouterService.class);
-    private static SqlSessionFactory sqlSessionFactory = null;
 
-    public static SqlSessionFactory getSqlSessionFactory() {
-        if (sqlSessionFactory == null) {
-            try {
-                String resource = "mybatis-config.xml";
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(resource));
-                return sqlSessionFactory;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sqlSessionFactory;
-    }
-
+    private static SqlSessionFactory factory = SessionFactory.getSqlSessionFactory();
     /**
      * 批量插入
      */
     public static void addRouters(List<RouterModel> routers) {
         SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             routerMapper.addRouters(routers);
             log.info("插入成功！");
-            sqlSession.commit();
+            SessionFactory.commit(sqlSession);
         }catch (Exception e){
-            sqlSession.rollback();
+            SessionFactory.rollBack(sqlSession);
             e.printStackTrace();
-        } finally {
-            sqlSession.close();
         }
 
     }
@@ -60,16 +43,14 @@ public class RouterService {
     public static void addRouter(RouterModel router){
         SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             routerMapper.addRouter(router);
             log.info("插入成功！");
-            sqlSession.commit();
+            SessionFactory.commit(sqlSession);
         }catch (Exception e){
-            sqlSession.rollback();
+            SessionFactory.rollBack(sqlSession);
             e.printStackTrace();
-        }finally {
-            sqlSession.close();
         }
 
     }
@@ -78,14 +59,14 @@ public class RouterService {
      * 全部
      */
     public static List<RouterModel> routers(){
-        SqlSession sqlSession;
+        SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             return routerMapper.routers();
-
         }catch (Exception e){
             e.printStackTrace();
+            SessionFactory.close(sqlSession);
             return null;
         }
     }
@@ -94,13 +75,14 @@ public class RouterService {
      * 详情
      */
     public static RouterModel routerDetail(int requestId){
-        SqlSession sqlSession;
+        SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             return routerMapper.routerDetail(requestId);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            SessionFactory.close(sqlSession);
             return null;
         }
     }
@@ -111,45 +93,40 @@ public class RouterService {
     public static void updateRouter(RouterModel param){
         SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             routerMapper.updateRouter(param);
-            sqlSession.commit();
+            SessionFactory.commit(sqlSession);
         }catch (Exception e){
-            sqlSession.rollback();
+            SessionFactory.rollBack(sqlSession);
             e.printStackTrace();
-        } finally {
-            sqlSession.close();
         }
     }
 
-    public static List<RouterModel> routersByConditions(RouterModel param){
+    public static List<Map<String, Object>> routersByConditions(RouterModel param){
 
         SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             return routerMapper.routersByConditions(param);
         }catch (Exception e){
             e.printStackTrace();
-        } finally {
-            sqlSession.close();
+            SessionFactory.rollBack(sqlSession);
+            return null;
         }
-        return null;
     }
 
     public static void remove(Integer requestId) {
         SqlSession sqlSession = null;
         try {
-            sqlSession = getSqlSessionFactory().openSession();
+            sqlSession = factory.openSession();
             RouterMapper routerMapper = sqlSession.getMapper(RouterMapper.class);
             routerMapper.delete( requestId );
-            sqlSession.commit();
+            SessionFactory.commit(sqlSession);
         }catch (Exception e){
-            sqlSession.close();
+            SessionFactory.rollBack(sqlSession);
             e.printStackTrace();
-        } finally {
-            sqlSession.close();
         }
     }
 }

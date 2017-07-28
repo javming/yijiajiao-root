@@ -25,7 +25,7 @@
 
   <servlet>
     <servlet-name>login</servlet-name>
-    <servlet-class>com.yijiajiao.root.manage.LoginServlet</servlet-class>
+    <servlet-class>com.yijiajiao.root.manage.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -33,7 +33,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>routers</servlet-name>
-    <servlet-class>com.yijiajiao.root.manage.ShowRoutersServlet</servlet-class>
+    <servlet-class>com.yijiajiao.root.manage.servlet.ShowRoutersServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -42,12 +42,29 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>updateRouters</servlet-name>
-    <servlet-class>com.yijiajiao.root.manage.UpdateRouterServlet</servlet-class>
+    <servlet-class>com.yijiajiao.root.manage.servlet.UpdateRouterServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>updateRouters</servlet-name>
     <url-pattern>/saveOrUpdate.action</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>showServer</servlet-name>
+    <servlet-class>com.yijiajiao.root.manage.servlet.ShowServersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showServer</servlet-name>
+    <url-pattern>/servers.action</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>modServer</servlet-name>
+    <servlet-class>com.yijiajiao.root.manage.servlet.UpdateServerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modServer</servlet-name>
+    <url-pattern>/modServer.action</url-pattern>
   </servlet-mapping>
 
   <filter>

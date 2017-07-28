@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- 错落有致的，真漂亮，后来维护者请保持 -->
 <mapper namespace="com.yijiajiao.root.manage.mapper.RouterMapper">
 
     <select id="routers" resultType="router">
@@ -12,9 +11,11 @@
             router.mapping_url mappingUrl,
             router.router_status routerStatus,
             router.replace_regex replaceRegex,
-            router.description description
+            router.description description,
+            server_id serverId,
+            update_time updateTime
         FROM request_router router
-        WHERE router.delete=0
+        ORDER BY router.request_id DESC
     </select>
 
     <select id="routerDetail" resultType="router" parameterType="int">
@@ -26,13 +27,14 @@
             mapping_url mappingUrl,
             router_status routerStatus,
             replace_regex replaceRegex,
-            description description
+            description description,
+            server_id serverId,
+            update_time updateTime
         FROM request_router
         WHERE request_id=#{requestId}
     </select>
 
-    <select id="routersByConditions" resultType="router" parameterType="router">
-
+    <select id="routersByConditions" resultType="map" parameterType="router">
         SELECT
             router.request_id requestId,
             router.request_url requestUrl,
@@ -41,9 +43,14 @@
             router.mapping_url mappingUrl,
             router.router_status routerStatus,
             router.replace_regex replaceRegex,
-            router.description description
+            router.description description,
+            router.server_id serverId,
+            router.update_time updateTime,
+            server.server_agent serverAgent
         FROM request_router router
-        WHERE router.delete=0
+        LEFT JOIN t_server server
+        ON router.server_id=server.server_id
+        WHERE 1=1
         <if test="requestUrl!=null">
             AND router.request_url=#{requestUrl}
         </if>
@@ -56,6 +63,7 @@
         <if test="mappingUrl!=null">
             AND router.mapping_url=#{mappingUrl}
         </if>
+        ORDER BY router.request_id DESC
     </select>
 
     <insert id="addRouter" parameterType="router">
@@ -66,7 +74,9 @@
             mapping_url,
             router_status,
             replace_regex,
-            description
+            description,
+            server_id,
+            update_time
         ) VALUES (
             #{requestUrl},
             #{requestMethod},
@@ -74,7 +84,9 @@
             #{mappingUrl},
             #{routerStatus},
             #{replaceRegex},
-            #{description}
+            #{description},
+            #{serverId},
+            now()
         )
     </insert>
 
@@ -86,7 +98,9 @@
           mapping_url=#{mappingUrl},
           router_status=#{routerStatus},
           replace_regex=#{replaceRegex},
-          description=#{description}
+          description=#{description},
+          server_id=#{serverId},
+          update_time=now()
         WHERE request_id=#{requestId}
     </update>
 
@@ -98,7 +112,9 @@
             mapping_url,
             router_status,
             replace_regex,
-            description
+            description,
+            server_id,
+            update_time
         ) VALUES
         <foreach collection="list" item="router" index="index" separator=",">
             (
@@ -108,18 +124,18 @@
             #{router.mappingUrl},
             #{router.routerStatus},
             #{router.replaceRegex},
-            #{router.description}
+            #{router.description},
+            #{router.serverId},
+            now()
             )
         </foreach>
 
     </insert>
 
-    <update id="delete" >
-        UPDATE request_router router
-        SET
-          router.delete=1
+    <delete id="delete" >
+        DELETE FROM request_router
         WHERE
-          router.request_id=#{requestId}
-    </update>
+          request_id=#{requestId}
+    </delete>
 
 </mapper>

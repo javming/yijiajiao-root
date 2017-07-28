@@ -1,5 +1,7 @@
 package com.yijiajiao.root.manage.model;
 
+import java.util.Date;
+
 /**
  * @AUTHOR zhaoming@eduspace
  * @CREATE 2017-07-10-10:55
@@ -14,12 +16,15 @@ public class RouterModel {
     private String routerStatus;
     private String replaceRegex;
     private String description; //描述
+    private Integer serverId;
+    private Date updateTime;
 
     public RouterModel() {
     }
 
     public RouterModel(Integer requestId, String requestUrl, String requestMethod, String requestStatus,
-                       String mappingUrl, String routerStatus, String replaceRegex, String description) {
+                       String mappingUrl, String routerStatus, String replaceRegex, String description,
+                       Integer serverId, Date updateTime) {
         this.requestId = requestId;
         this.requestUrl = requestUrl;
         this.requestMethod = requestMethod;
@@ -28,6 +33,8 @@ public class RouterModel {
         this.routerStatus = routerStatus;
         this.replaceRegex = replaceRegex;
         this.description = description;
+        this.serverId = serverId;
+        this.updateTime = updateTime;
     }
 
     public Integer getRequestId() {
@@ -94,6 +101,22 @@ public class RouterModel {
         this.description = description;
     }
 
+    public Integer getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(Integer serverId) {
+        this.serverId = serverId;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
         return "RouterModel{" +
@@ -105,6 +128,8 @@ public class RouterModel {
                 ", routerStatus='" + routerStatus + '\'' +
                 ", replaceRegex='" + replaceRegex + '\'' +
                 ", description='" + description + '\'' +
+                ", serverId=" + serverId +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

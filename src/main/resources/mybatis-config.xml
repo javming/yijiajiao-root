@@ -6,6 +6,7 @@
     <properties resource="config.properties"/>
     <typeAliases>
         <typeAlias type="com.yijiajiao.root.manage.model.RouterModel" alias="router"/>
+        <typeAlias type="com.yijiajiao.root.manage.model.ServerModel" alias="server"/>
     </typeAliases>
 
     <!-- 配置环境，制定数据库连接信息 -->

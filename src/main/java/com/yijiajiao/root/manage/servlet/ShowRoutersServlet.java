@@ -1,6 +1,8 @@
-package com.yijiajiao.root.manage;
+package com.yijiajiao.root.manage.servlet;
 
+import com.alibaba.fastjson.JSON;
 import com.yijiajiao.root.manage.model.RouterModel;
+import com.yijiajiao.root.manage.service.RouterService;
 import com.yijiajiao.root.utils.Config;
 import com.yijiajiao.root.utils.RedisUtil;
 import com.yijiajiao.root.utils.StringUtil;
@@ -12,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhaoming
@@ -30,9 +34,7 @@ public class ShowRoutersServlet extends HttpServlet {
 
         String token = (String)req.getSession().getAttribute(Config.getBaseString("username"));
         if (StringUtil.isEmpty(token) || !token.equals(RedisUtil.getValue(Config.getBaseString("username")))){
-            req.setAttribute("msg","权限不足，操作取消！");
-            req.getRequestDispatcher("/error.jsp").forward(req,resp);
-            return;
+            throw new RuntimeException("请登录操作！");
         }
 
         String condition = req.getParameter("condition");
@@ -40,21 +42,25 @@ public class ShowRoutersServlet extends HttpServlet {
         RouterModel param = new RouterModel();
         if (condition!=null){
             log.info("搜索条件：{ condition:" + condition + ";keyWord=" + keyWord + " }");
-            if ("requestURL".equals(condition)){
+            if ("requestUrl".equals(condition)){
                 param.setRequestUrl(keyWord);
-            } else if ("requestMethod".equals(condition)){
+            }
+            else if ("requestMethod".equals(condition)){
                 param.setRequestMethod(keyWord);
-            } else if ("mappingURL".equals(condition)){
+            }
+            else if ("mappingUrl".equals(condition)){
                 param.setMappingUrl(keyWord);
-            } else if ("requestStatus".equals(condition)){
+            }
+            else if ("requestStatus".equals(condition)){
                 param.setRequestStatus(keyWord);
             }
-            req.setAttribute("condition",condition);
-            req.setAttribute("keyWord",keyWord);
         }
-        List<RouterModel> list = RouterService.routersByConditions(param);
-
-        req.setAttribute("routers",list);
-        req.getRequestDispatcher("/index.jsp").forward(req,resp);
+        List<Map<String, Object>> list = RouterService.routersByConditions(param);
+        log.info(JSON.toJSONString(list));
+        //req.setAttribute("routers",list);
+        //req.getRequestDispatcher("/index.jsp").forward(req,resp);
+        PrintWriter out = resp.getWriter();
+        out.print(JSON.toJSON(list));
+        out.close();
     }
 }

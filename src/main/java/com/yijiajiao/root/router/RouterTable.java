@@ -1,6 +1,6 @@
 package com.yijiajiao.root.router;
 
-import com.yijiajiao.root.manage.RouterService;
+import com.yijiajiao.root.manage.service.RouterService;
 import com.yijiajiao.root.manage.model.RouterModel;
 import com.yijiajiao.root.utils.StringUtil;
 import org.slf4j.Logger;
@@ -215,11 +215,11 @@ public class RouterTable implements Serializable{
 
         RouterTable instance = getInstance();
         List<RouterModel> routers = new ArrayList<>();
-        for (RouterInfo ri : instance.routerInfos){
+/*        for (RouterInfo ri : instance.routerInfos){
             RouterModel routerModel = new RouterModel(null,ri.getRequestURL(),ri.getRequestMothed(),
                     ri.getRequestStatus(),ri.getMappingURL(),ri.getRouterStatus(),ri.getReplaceRegex(),"接口");
             routers.add(routerModel);
-        }
+        }*/
         RouterService.addRouters(routers);
     }
 }

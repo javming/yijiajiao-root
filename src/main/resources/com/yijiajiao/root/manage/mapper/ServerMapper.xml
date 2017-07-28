@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yijiajiao.root.manage.mapper.ServerMapper">
+
+    <insert id="addServer" parameterType="server">
+        INSERT INTO t_server(
+            server_name,
+            server_port,
+            server_agent
+        ) VALUES (
+            #{serverName},
+            #{serverPort},
+            #{serverAgent}
+        )
+    </insert>
+
+    <select id="detail" parameterType="int" resultType="server">
+        SELECT server_id AS serverId,
+          server_name AS serverName,
+          server_port as serverPort,
+          server_agent AS serverAgent
+        FROM t_server
+        WHERE server_id=#{serverId}
+    </select>
+
+    <select id="all" resultType="server">
+        SELECT server_id AS serverId,
+          server_name AS serverName,
+          server_port as serverPort,
+          server_agent AS serverAgent
+        FROM t_server
+    </select>
+
+    <update id="update" parameterType="server">
+        UPDATE t_server
+        SET
+         server_name=#{serverName},
+         server_port=#{serverPort},
+         server_agent=#{serverAgent}
+        WHERE
+         server_id=#{serverId}
+    </update>
+
+</mapper>

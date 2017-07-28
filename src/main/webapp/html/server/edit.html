@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/ckform.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<form class="definewidth m20">
+    <input type="hidden" id="serverId" name="serverId" />
+    <table class="table table-bordered table-hover definewidth m10">
+        <tr>
+            <td width="10%" class="tableleft">服务器名称</td>
+            <td><input type="text" id="serverName" name="serverName"/></td>
+        </tr>
+        <tr>
+            <td class="tableleft">服务器端口</td>
+            <td><input type="text" id="serverPort" name="serverPort"/></td>
+        </tr>
+        <tr>
+            <td class="tableleft">代理人姓名</td>
+            <td><input type="text" id="serverAgent" name="serverAgent"/></td>
+        </tr>
+        <tr>
+            <td class="tableleft"></td>
+            <td>
+                <button id="submit" class="btn btn-primary" type="button">保存</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    $(function () {
+        //加载信息
+        serverInfo(getQueryString("serverId"));
+
+
+		$('#backid').click(function(){
+				window.location.href="index.html";
+        });
+
+
+    });
+
+    function serverInfo(serverId) {
+        $.ajax({
+            type:'get',
+            url: '/servers.action?serverId=' + serverId,
+            dataType:'json',
+            success:function (data) {
+                var result = data;
+                $("#serverId").val(result.serverId);
+                $("#serverName").val(result.serverName);
+                $("#serverPort").val(result.serverPort);
+                $("#serverAgent").val(result.serverAgent);
+            }
+        });
+    }
+
+    function getQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+</script>

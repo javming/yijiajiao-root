@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/ckform.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<form>
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td width="10%" class="tableleft">服务器名称</td>
+        <td><input type="text" name="serverName"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">服务器端口</td>
+        <td><input type="text" name="serverPort"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">代理人姓名</td>
+        <td><input type="text" name="serverAgent"/></td>
+    </tr>
+
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button id="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+        </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
+<script>
+    $(function () {       
+		$('#backid').click(function(){
+				window.location.href="index.html";
+        });
+        $("#submit").click(function () {
+            window.confirm("是否提交？");
+            var serverName = $("input[name='serverName']").val().trim();
+            var serverPort = $("input[name='serverPort']").val().trim();
+            var serverAgent = $("input[name='serverAgent']").val().trim();
+            if (serverName=="" || serverName==null){
+                alert("请输入 serverName");
+                return;
+            }
+            if (serverPort==null || serverPort==""){
+                alert("请输入 serverPort");
+                return;
+            }
+            if (serverAgent==null || serverAgent==""){
+                alert("请输入 serverAgent");
+                return;
+            }
+
+            $.ajax({
+                url:'/modServer.action?type=1',
+                type:'post',
+                data:{
+                    "serverName":serverName,
+                    "serverPort":serverPort,
+                    "serverAgent":serverAgent
+                },
+                dataType:'text',
+                success:function () {
+                    window.location.href="index.html";
+                },
+                error:function (msg) {
+                    alert(msg.value);
+                }
+            });
+        });
+    });
+</script>

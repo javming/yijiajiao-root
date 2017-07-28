@@ -3,6 +3,7 @@ package com.yijiajiao.root.manage.mapper;
 import com.yijiajiao.root.manage.model.RouterModel;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @AUTHOR zhaoming@eduspace
@@ -14,7 +15,7 @@ public interface RouterMapper {
 
     RouterModel routerDetail(int requestId);
 
-    List<RouterModel> routersByConditions(RouterModel param);
+    List<Map<String, Object>> routersByConditions(RouterModel param);
 
     void addRouter(RouterModel param);
 
