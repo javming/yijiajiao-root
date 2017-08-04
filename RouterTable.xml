@@ -6362,6 +6362,117 @@
 					</void>
 				</object>
 			</void>
+
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22050/yijiajiao-sales/action/freestudy/myfreestudylist</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/myfreestudylist</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22060/yijiajiao-server/user/freeStudy/diaglist</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/freeStudyDiaglist</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22050/yijiajiao-sales/action/freestudy/add/course</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>POST</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/addfreestudycourse</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22050/yijiajiao-sales/action/freestudy/classList</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/freestudyclasslist</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
+			<void method="add">
+				<object class="com.yijiajiao.root.router.RouterInfo">
+					<void property="mappingURL">
+						<string>http://127.0.0.1:22050/yijiajiao-sales/action/freestudy/delcourse</string>
+					</void>
+					<void property="replaceRegex">
+						<string></string>
+					</void>
+					<void property="requestMothed">
+						<string>GET</string>
+					</void>
+					<void property="requestStatus">
+						<string>LOGIN</string>
+					</void>
+					<void property="requestURL">
+						<string>/delfreestudycourse</string>
+					</void>
+					<void property="routerStatus">
+						<string>INSTALLED_TOUTER</string>
+					</void>
+				</object>
+			</void>
 		</void>
 	</object>
 </java>

@@ -18,13 +18,14 @@ public class RouterModel {
     private String description; //描述
     private Integer serverId;
     private Date updateTime;
+    private String wiki;
 
     public RouterModel() {
     }
 
     public RouterModel(Integer requestId, String requestUrl, String requestMethod, String requestStatus,
                        String mappingUrl, String routerStatus, String replaceRegex, String description,
-                       Integer serverId, Date updateTime) {
+                       Integer serverId, Date updateTime, String wiki) {
         this.requestId = requestId;
         this.requestUrl = requestUrl;
         this.requestMethod = requestMethod;
@@ -35,6 +36,7 @@ public class RouterModel {
         this.description = description;
         this.serverId = serverId;
         this.updateTime = updateTime;
+        this.wiki = wiki;
     }
 
     public Integer getRequestId() {
@@ -115,6 +117,14 @@ public class RouterModel {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getWiki() {
+        return wiki;
+    }
+
+    public void setWiki(String wiki) {
+        this.wiki = wiki;
     }
 
     @Override

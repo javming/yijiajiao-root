@@ -38,60 +38,71 @@
 <table class="table table-bordered table-hover ">
     <tr>
         <td class="tableleft">请求短路径(requestUrl)</td>
-        <td><input type="text" name="requestUrl"/></td>
+        <td id="requestUrl"></td>
     </tr>
     <tr>
         <td class="tableleft">请求方法(requestMethod)</td>
-        <td>
-            <input type="radio" name="requestMethod" value="GET" checked/> GET
-            <input type="radio" name="requestMethod" value="POST"/> POST
-            <input type="radio" name="requestMethod" value="PUT"/> PUT
-            <input type="radio" name="requestMethod" value="DELETE"/> DELETE
+        <td id="requestMethod">
         </td>
     </tr>
     <tr>
         <td class="tableleft">登录限制(requestStatus)</td>
-        <td>
-            <input type="radio" name="requestStatus" value="LOGIN" checked/> LOGIN
-            <input type="radio" name="requestStatus" value="UNLOGIN"/> UNLOGIN
+        <td id="requestStatus">
         </td>
-    </tr>
-    <tr>
-        <td class="tableleft">服务器</td>
-        <td>
-            <select id="server"></select>
-        </td>
-    </tr>
-    <tr>
-        <td class="tableleft">二级短路径(mappingUrl)</td>
-        <td><input type="text" name="mappingUrl"/></td>
-        <input type="hidden" name="routerStatus" value="INSTALLED_TOUTER"/>
-        <input type="hidden" name="replaceRegex" value=""/>
-    </tr>
-    <tr>
-        <td class="tableleft">接口描述(description)</td>
-        <td><input type="text" name="description"/></td>
     </tr>
 
     <tr>
-        <td class="tableleft"></td>
-        <td>
-            <button id="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;
-            <button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
-        </td>
+        <td class="tableleft">二级短路径(mappingUrl)</td>
+        <td id="mappingUrl"> </td>
     </tr>
+
+    <tr>
+        <td class="tableleft">接口描述(description)</td>
+        <td id="description"> </td>
+    </tr>
+
 </table>
 </form>
 </body>
 </html>
 <script>
-    $(function () {       
+    $(function () {
+        routerInfo(getQueryString("requestId"));
+
 		$('#backid').click(function(){
 				window.location.href="index.html";
         });
+
+
     });
     
     function routerInfo(requestId) {
+        $.ajax({
+            type:'get',
+            url: '/routers.action?requestId=' + requestId,
+            dataType:'json',
+            success:function (data) {
+                var result = data;
+                alert(result.requestUrl);
+                $("#requestUrl").html(result.requestUrl);
+                $("#requestMethod").html(result.requestMethod);
+                $("#requestStatus").html(result.requestStatus);
+                $("#mappingUrl").html(result.mappingUrl);
+                $("#description").html(result.description);
+                $("#wiki").html(result.wiki);
+            },
+            error: function() {
+                if (confirm("登录过期，请登录！")){
+                    top.location.href="/login.html";
+                }
+            }
+        });
+    }
 
+    function getQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 </script>

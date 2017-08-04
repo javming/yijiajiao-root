@@ -85,8 +85,10 @@
                 }
                 $("#servers").html(str);
             },
-            error:function (data) {
-                alert(data);
+            error: function() {
+                if (confirm("登录过期，请登录！")){
+                    top.location.href="/login.html";
+                }
             }
         });
     }

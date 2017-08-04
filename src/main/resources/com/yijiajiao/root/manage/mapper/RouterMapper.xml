@@ -13,7 +13,8 @@
             router.replace_regex replaceRegex,
             router.description description,
             server_id serverId,
-            update_time updateTime
+            update_time updateTime,
+            wiki
         FROM request_router router
         ORDER BY router.request_id DESC
     </select>
@@ -29,7 +30,8 @@
             replace_regex replaceRegex,
             description description,
             server_id serverId,
-            update_time updateTime
+            update_time updateTime,
+            wiki
         FROM request_router
         WHERE request_id=#{requestId}
     </select>
@@ -76,7 +78,8 @@
             replace_regex,
             description,
             server_id,
-            update_time
+            update_time,
+            wiki
         ) VALUES (
             #{requestUrl},
             #{requestMethod},
@@ -86,7 +89,8 @@
             #{replaceRegex},
             #{description},
             #{serverId},
-            now()
+            now(),
+            #{wiki}
         )
     </insert>
 
@@ -100,7 +104,8 @@
           replace_regex=#{replaceRegex},
           description=#{description},
           server_id=#{serverId},
-          update_time=now()
+          update_time=now(),
+          wiki=#{wiki}
         WHERE request_id=#{requestId}
     </update>
 
@@ -114,7 +119,8 @@
             replace_regex,
             description,
             server_id,
-            update_time
+            update_time,
+            wiki
         ) VALUES
         <foreach collection="list" item="router" index="index" separator=",">
             (
@@ -126,7 +132,8 @@
             #{router.replaceRegex},
             #{router.description},
             #{router.serverId},
-            now()
+            now(),
+            #{router.wiki}
             )
         </foreach>
 

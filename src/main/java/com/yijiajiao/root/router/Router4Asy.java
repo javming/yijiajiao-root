@@ -51,12 +51,10 @@ public class Router4Asy extends HttpServlet {
 
         AsyncContext aCtx = request.startAsync(request, response);
 
-        if ("/command".equals(request.getRequestURI())||"/command/".equals(request.getRequestURI())){
+/*        if ("/command".equals(request.getRequestURI())||"/command/".equals(request.getRequestURI())){
             aCtx.start(new LogicMapping(aCtx, request, response));
-        }else {
-            log.info("异步请求》》》》》》》》》》》》》》》》》》》》》");
-            aCtx.start(new HandleThread(aCtx, request, response));
-        }
+        }*/
+        aCtx.start(new HandleThread(aCtx, request, response));
 
     }
 }

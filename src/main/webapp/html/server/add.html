@@ -91,8 +91,10 @@
                 success:function () {
                     window.location.href="index.html";
                 },
-                error:function (msg) {
-                    alert(msg.value);
+                error: function() {
+                    if (confirm("登录过期，请登录！")){
+                        top.location.href="/login.html";
+                    }
                 }
             });
         });

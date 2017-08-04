@@ -46,8 +46,31 @@ public class UpdateRouterServlet extends HttpServlet{
             }
             ServerModel server = ServerService.detail(Integer.parseInt(serverId));
             String requestId = req.getParameter("requestId");
+            String mapUrl = req.getParameter("mappingUrl");
             String mappingUrl = Config.getString("ip_path") + server.getServerPort() + "/" + server.getServerName()
-                    + req.getParameter("mappingUrl");
+                    + mapUrl ;
+
+            if ("22060".equals(server.getServerPort())){
+                if (mapUrl.contains("/customer/")){
+                    serverId = "1";
+                }else if (mapUrl.contains("/oss/")){
+                    serverId = "2";
+                }else if (mapUrl.contains("/sale/")){
+                    serverId = "3";
+                }else if (mapUrl.contains("/solution/")){
+                    serverId = "5";
+                }else if (mapUrl.contains("/user/")){
+                    serverId = "6";
+                }else if (mapUrl.contains("/wares/") || mapUrl.contains("/resourece/")){
+                    serverId = "8";
+                } else if (mapUrl.contains("/finance/")){
+                    serverId = "10";
+                }else if (mapUrl.contains("/msg/")){
+                    serverId = "11";
+                }else if (mapUrl.contains("/promotion/")){
+                    serverId = "12";
+                }
+            }
             RouterModel router = new RouterModel( requestId==null?null:Integer.parseInt(requestId),
                     req.getParameter("requestUrl"),
                     req.getParameter("requestMethod"),
@@ -56,8 +79,9 @@ public class UpdateRouterServlet extends HttpServlet{
                     req.getParameter("routerStatus"),
                     req.getParameter("replaceRegex"),
                     req.getParameter("description"),
-                    server.getServerId(),
-                    null);
+                    Integer.parseInt(serverId),
+                    null,
+                    req.getParameter("wiki"));
 
             if ("1".equals(type)){
                 log.info("添加==》" + router);

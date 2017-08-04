@@ -76,6 +76,8 @@
                 }
             });
 
+        }else{
+            return;
         }
     }
     function queryRouters(condition,keyWord) {
@@ -116,14 +118,16 @@
                         '<td>' + replaceRegex + '</td>' +
                         '<td>' + description + '</td>' +
                         '<td>' + serverAgent + '</td>' +
-                        '<td><a class="btn btn-primary" href="" onclick="del('+id+')">删除</a></td>' +
+                        '<td><a class="btn btn-primary" href="detail.html?requestId='+id+'" onclick="">详情</a>&nbsp;&nbsp;' +
+                        '<a class="btn btn-primary" href="" onclick="del('+id+')">删除</a></td>' +
                         '</tr>';
                 }
                 $("#routers").html(str);
             },
-            error:function (data) {
-                alert(data);
-                window.location.href="/login.html";
+            error: function() {
+                if (confirm("登录过期，请登录！")){
+                    top.location.href="/login.html";
+                }
             }
         });
     }

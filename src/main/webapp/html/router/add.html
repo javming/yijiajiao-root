@@ -37,7 +37,7 @@
 
     <tr>
         <td class="tableleft">请求短路径(requestUrl)</td>
-        <td><input type="text" name="requestUrl"/></td>
+        <td><input type="text" name="requestUrl" value="以'/'开始" onfocus="this.value=''" onblur="if(this.value==''){this.value='以 / 开始'}"/></td>
     </tr>   
     <tr>
         <td class="tableleft">请求方法(requestMethod)</td>
@@ -63,7 +63,7 @@
     </tr>
     <tr>
         <td class="tableleft">二级短路径(mappingUrl)</td>
-        <td><input type="text" name="mappingUrl"/></td>
+        <td><input type="text" name="mappingUrl"value="以'/'开始" onfocus="this.value=''" onblur="if(this.value==''){this.value='以 / 开始'}"/></td>
         <input type="hidden" name="routerStatus" value="INSTALLED_TOUTER"/>
         <input type="hidden" name="replaceRegex" value=""/>
     </tr>
@@ -71,7 +71,6 @@
         <td class="tableleft">接口描述(description)</td>
         <td><input type="text" name="description"/></td>
     </tr>
-
     <tr>
         <td class="tableleft"></td>
         <td>
@@ -84,6 +83,7 @@
 </body>
 </html>
 <script>
+
     $(function () {       
 		$('#backid').click(function(){
 				window.location.href="index.html";
@@ -93,6 +93,7 @@
 
         $("#submit").click(function () {
             if(window.confirm("是否提交？")){
+
                 var requestUrl = $("input[name='requestUrl']").val().trim();
                 var requestMethod = $("input[name='requestMethod']").val();
                 var requestStatus = $("input[name='requestStatus']").val();
@@ -125,8 +126,10 @@
                     success:function () {
                         window.location.href="index.html";
                     },
-                    error:function (msg) {
-                        if (confirm(msg));
+                    error: function() {
+                        if (confirm("登录过期，请登录！")){
+                            top.location.href="/login.html";
+                        }
                     }
                 });
             }
@@ -148,9 +151,12 @@
                 }
                 $("#server").html(str);
             },
-            error:function (msg) {
-                alert(msg.value);
+            error: function() {
+                if (confirm("登录过期，请登录！")){
+                    top.location.href="/login.html";
+                }
             }
         })
     }
+
 </script>

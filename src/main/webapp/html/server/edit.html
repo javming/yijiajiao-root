@@ -62,11 +62,49 @@
         //加载信息
         serverInfo(getQueryString("serverId"));
 
-
 		$('#backid').click(function(){
 				window.location.href="index.html";
         });
 
+        $("#submit").click(function () {
+            window.confirm("是否提交？");
+            var serverId = $("input[name=serverId]").val();
+            var serverName = $("input[name='serverName']").val().trim();
+            var serverPort = $("input[name='serverPort']").val().trim();
+            var serverAgent = $("input[name='serverAgent']").val().trim();
+            if (serverName=="" || serverName==null){
+                alert("请输入 serverName");
+                return;
+            }
+            if (serverPort==null || serverPort==""){
+                alert("请输入 serverPort");
+                return;
+            }
+            if (serverAgent==null || serverAgent==""){
+                alert("请输入 serverAgent");
+                return;
+            }
+
+            $.ajax({
+                url:'/modServer.action?type=2',
+                type:'post',
+                data:{
+                    "serverId":serverId,
+                    "serverName":serverName,
+                    "serverPort":serverPort,
+                    "serverAgent":serverAgent
+                },
+                dataType:'text',
+                success:function () {
+                    window.location.href="index.html";
+                },
+                error: function() {
+                    if (confirm("登录过期，请登录！")){
+                        top.location.href="/login.html";
+                    }
+                }
+            });
+        });
 
     });
 
@@ -81,6 +119,11 @@
                 $("#serverName").val(result.serverName);
                 $("#serverPort").val(result.serverPort);
                 $("#serverAgent").val(result.serverAgent);
+            },
+            error: function() {
+                if (confirm("登录过期，请登录！")){
+                    top.location.href="/login.html";
+                }
             }
         });
     }
