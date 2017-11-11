@@ -45,13 +45,13 @@ public class ShowRoutersServlet extends HttpServlet {
             if (condition!=null){
                 log.info("搜索条件：{ condition:" + condition + ";keyWord=" + keyWord + " }");
                 if ("requestUrl".equals(condition)){
-                    param.setRequestUrl(keyWord);
+                    param.setRequestUrl("%"+keyWord+"%");
                 }
                 else if ("requestMethod".equals(condition)){
                     param.setRequestMethod(keyWord);
                 }
                 else if ("mappingUrl".equals(condition)){
-                    param.setMappingUrl(keyWord);
+                    param.setMappingUrl("%"+keyWord+"%");
                 }
                 else if ("requestStatus".equals(condition)){
                     param.setRequestStatus(keyWord);

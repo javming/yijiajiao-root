@@ -66,6 +66,14 @@
     <servlet-name>modServer</servlet-name>
     <url-pattern>/modServer.action</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>VerifyCode</servlet-name>
+    <servlet-class>com.yijiajiao.root.router.VerifyCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyCode</servlet-name>
+    <url-pattern>/verifyCode.action</url-pattern>
+  </servlet-mapping>
 
   <filter>
     <filter-name>encoding</filter-name>

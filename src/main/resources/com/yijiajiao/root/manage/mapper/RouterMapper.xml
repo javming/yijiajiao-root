@@ -54,7 +54,7 @@
         ON router.server_id=server.server_id
         WHERE 1=1
         <if test="requestUrl!=null">
-            AND router.request_url=#{requestUrl}
+            AND router.request_url LIKE #{requestUrl}
         </if>
         <if test="requestMethod!=null">
             AND router.request_method=#{requestMethod}
@@ -63,7 +63,7 @@
             AND router.request_status=#{requestStatus}
         </if>
         <if test="mappingUrl!=null">
-            AND router.mapping_url=#{mappingUrl}
+            AND router.mapping_url LIKE #{mappingUrl}
         </if>
         ORDER BY router.request_id DESC
     </select>

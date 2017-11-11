@@ -42,7 +42,7 @@
     <tr>
         <td class="tableleft">请求方法(requestMethod)</td>
         <td>
-            <input type="radio" name="requestMethod" value="GET" checked/> GET
+            <input type="radio" name="requestMethod" value="GET"/> GET
             <input type="radio" name="requestMethod" value="POST"/> POST
             <input type="radio" name="requestMethod" value="PUT"/> PUT
             <input type="radio" name="requestMethod" value="DELETE"/> DELETE
@@ -51,7 +51,7 @@
     <tr>
         <td class="tableleft">登录限制(requestStatus)</td>
         <td>
-            <input type="radio" name="requestStatus" value="LOGIN" checked/> LOGIN
+            <input type="radio" name="requestStatus" value="LOGIN"/> LOGIN
             <input type="radio" name="requestStatus" value="UNLOGIN"/> UNLOGIN
         </td>
     </tr>
@@ -95,8 +95,8 @@
             if(window.confirm("是否提交？")){
 
                 var requestUrl = $("input[name='requestUrl']").val().trim();
-                var requestMethod = $("input[name='requestMethod']").val();
-                var requestStatus = $("input[name='requestStatus']").val();
+                var requestMethod = $("input[name='requestMethod']:checked").val();
+                var requestStatus = $("input[name='requestStatus']:checked").val();
                 var serverId = $("#server").val();
                 var mappingUrl = $("input[name='mappingUrl']").val().trim();
                 var routerStatus = $("input[name='routerStatus']").val();
